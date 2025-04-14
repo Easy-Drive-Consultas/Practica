@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego de Preguntas - Educación Vial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      background: white;
+      border: 4px solid #e60000;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      position: relative;
+      padding-top: 100px; /* Espacio para el logo */
+    }
+
+    h2 {
+      color: #e60000;
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      background-color: #eee;
+      border: 2px solid #ccc;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: #000;
+    }
+
+    .option:hover {
+      background-color: #ffeb3b; /* Amarillo como un semáforo */
+    }
+
+    .option.correct {
+      background-color: #28a745; /* Verde cuando es correcto */
+      color: #fff;
+    }
+
+    .option.incorrect {
+      background-color: #dc3545; /* Rojo cuando es incorrecto */
+      color: #fff;
+    }
+
+    .timer {
+      font-size: 18px;
+      color: #e60000;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .counter {
+      font-size: 16px;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo para el botón de reinicio */
+    .restart-btn {
+      background-color: #dc3545; /* Rojo semáforo */
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: none; /* Se oculta inicialmente */
+    }
+
+    .restart-btn:hover {
+      background-color: #b02a2a; /* Rojo más oscuro cuando se pasa el cursor */
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="timer" id="timer">Tiempo: 60</div>
+    <h2>Educación Vial</h2>
+    <div class="counter" id="counter">Pregunta 1 de 10</div>
+    <div class="question" id="question">Cargando...</div>
+    <div class="options" id="options"></div>
+    <button class="restart-btn" id="restartBtn" onclick="reiniciarJuego()">Reiniciar Juego</button>
+  </div>
+
+  <script>
+    const bancoPreguntas = [
+      { pregunta: "¿Qué indica la luz amarilla del semáforo?", correcta: "Precaución", opciones: ["Detenerse", "Avanzar rápidamente", "Precaución", "Ninguna de las anteriores"] },
+      { pregunta: "¿A qué autoridad se debe notificar cuando ocurre un accidente de tránsito?", correcta: "A la policía de tránsito", opciones: ["A los bomberos", "A la policía de tránsito", "A la ambulancia", "A la aseguradora"] },
+      { pregunta: "¿En qué lugares está prohibido estacionar los vehículos?", correcta: "En un carril de circulación y sobre un paso de peatones", opciones: ["En zonas rurales", "En estacionamientos públicos", "En un carril de circulación y sobre un paso de peatones", "En garajes"] },
+      { pregunta: "¿Cuál es la velocidad máxima permitida en el carril izquierdo de una vía multicarril?", correcta: "80 km/h", opciones: ["50 km/h", "60 km/h", "70 km/h", "80 km/h"] },
+      { pregunta: "¿Qué debe hacer el conductor si encuentra lesionados en la vía aunque no esté implicado en el accidente?", correcta: "Transportar a los lesionados, dar parte a la policía y llamar a un centro de salud", opciones: ["Ignorarlos", "Esperar a que llegue otra persona", "Transportar a los lesionados, dar parte a la policía y llamar a un centro de salud", "Tomar una foto y seguir"] },
+      { pregunta: "¿Cuál es la definición de peatón?", correcta: "Toda persona que transita a pie o en artefactos especiales manejados por ellos", opciones: ["Un ciclista", "Toda persona que transita a pie o en artefactos especiales manejados por ellos", "Un pasajero", "Un conductor"] },
+      { pregunta: "¿Qué se debe hacer si una señal de tránsito está dañada?", correcta: "Notificar a la autoridad correspondiente", opciones: ["Ignorarla", "Notificar a la autoridad correspondiente", "Seguir conduciendo con normalidad", "Detenerse hasta que esté reparada"] },
+      { pregunta: "¿Cuándo se debe usar el cinturón de seguridad?", correcta: "Siempre, sin importar el lugar donde se viaje", opciones: ["Solo en carreteras", "Siempre, sin importar el lugar donde se viaje", "Solo en vehículos con más de 2 puertas", "Solo en viajes largos"] },
+      { pregunta: "¿Qué significa la señal de tránsito con un círculo rojo y una línea diagonal?", correcta: "Prohibido el paso", opciones: ["Permitido el paso", "Prohibido el paso", "Velocidad máxima", "Precaución"] },
+      { pregunta: "¿Qué se debe hacer en una intersección sin semáforo?", correcta: "Ceder el paso a los vehículos que circulan por la derecha", opciones: ["Detenerse completamente", "Ceder el paso a los vehículos que circulan por la derecha", "Esperar hasta que todos los vehículos pasen", "Avanzar sin detenerse"] }
+    ];
+
+    function obtenerPreguntasAleatorias(banco, cantidad) {
+      const copia = [...banco];
+      for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+      }
+      return copia.slice(0, cantidad);
+    }
+
+    const preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10); // Aseguramos que haya 10 preguntas
+    let currentQuestion = 0;
+    let timer;
+    let timeLeft = 60;
+    let score = 0;
+
+    function cargarPregunta() {
+      const q = preguntas[currentQuestion];
+      document.getElementById("question").innerText = q.pregunta;
+
+      const opcionesHTML = q.opciones
+        .sort(() => Math.random() - 0.5)
+        .map(opcion => `<div class="option" onclick="seleccionarRespuesta(this, '${opcion}')">${opcion}</div>`)
+        .join("");
+
+      document.getElementById("options").innerHTML = opcionesHTML;
+      timeLeft = 60;
+      document.getElementById("timer").innerText = `Tiempo: ${timeLeft}`;
+      document.getElementById("counter").innerText = `Pregunta ${currentQuestion + 1} de 10`; // Actualizar el contador
+      clearInterval(timer);
+      timer = setInterval(actualizarTimer, 1000);
+    }
+
+    function actualizarTimer() {
+      timeLeft--;
+      document.getElementById("timer").innerText = `Tiempo: ${timeLeft}`;
+      if (timeLeft === 0) {
+        clearInterval(timer);
+        siguientePregunta();
+      }
+    }
+
+    function seleccionarRespuesta(element, respuesta) {
+      const q = preguntas[currentQuestion];
+      const opciones = document.querySelectorAll(".option");
+      opciones.forEach(op => op.onclick = null);
+      if (respuesta === q.correcta) {
+        element.classList.add("correct");
+        score++;
+      } else {
+        element.classList.add("incorrect");
+        opciones.forEach(op => {
+          if (op.textContent === q.correcta) {
+            op.classList.add("correct");
+          }
+        });
+      }
+      clearInterval(timer);
+      setTimeout(siguientePregunta, 2000);
+    }
+
+    function siguientePregunta() {
+      currentQuestion++;
+      if (currentQuestion < preguntas.length) {
+        cargarPregunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function mostrarResultado() {
+      const mensaje = score >= 8 ? "¡Felicidades, eres un gran Easy Driver!" : "Sigue practicando para mejorar tus conocimientos.";
+      document.getElementById("question").innerText = `Juego terminado. ${mensaje}`;
+      document.getElementById("options").innerHTML = `Puntaje: ${score}/10`;
+      document.getElementById("timer").style.display = "none";
+      document.getElementById("restartBtn").style.display = "inline-block"; // Mostrar el botón de reinicio
+    }
+
+    function reiniciarJuego() {
+      currentQuestion = 0;
+      score = 0;
+      timeLeft = 60;
+      document.getElementById("timer").style.display = "block"; // Mostrar el temporizador
+      document.getElementById("restartBtn").style.display = "none"; // Ocultar el botón de reinicio
+      cargarPregunta(); // Volver a cargar la primera pregunta
+    }
+
+    cargarPregunta();
+  </script>
+</body>
+</html>
