@@ -115,7 +115,7 @@
     <div class="logo-container">
       <img src="logo.png" alt="Logo" class="logo" />
     </div>
-    <div class="timer" id="timer">Tiempo: 60</div>
+    <div class="timer" id="timer">Tiempo: 30</div>
     <h2>Educación Vial</h2>
     <div class="counter" id="counter">Pregunta 1 de 10</div>
     <div class="question" id="question">Cargando...</div>
@@ -2290,7 +2290,7 @@
     let preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10);
     let currentQuestion = 0;
     let timer;
-    let timeLeft = 60;
+    let timeLeft = 30;
     let score = 0;
 
     function cargarPregunta() {
@@ -2303,7 +2303,7 @@
         .join("");
 
       document.getElementById("options").innerHTML = opcionesHTML;
-      timeLeft = 60;
+      timeLeft = 30;
       document.getElementById("timer").innerText = `Tiempo: ${timeLeft}`;
       document.getElementById("counter").innerText = `Pregunta ${currentQuestion + 1} de 10`;
       clearInterval(timer);
@@ -2349,7 +2349,7 @@
 
     function mostrarResultado() {
       const mensaje = score >= 8
-        ? "¡Felicidades, eres un gran Easy Driver!"
+        ? "¡Felicidades, eres un Gran Easy Driver!"
         : "Sigue practicando para mejorar tus conocimientos.";
       document.getElementById("question").innerText = `Juego terminado. ${mensaje}`;
       document.getElementById("options").innerHTML = `Puntaje: ${score}/10`;
@@ -2360,7 +2360,7 @@
     function reiniciarJuego() {
       currentQuestion = 0;
       score = 0;
-      timeLeft = 60;
+      timeLeft = 30;
       preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10); // Nuevo set aleatorio
       document.getElementById("timer").style.display = "block";
       document.getElementById("restartBtn").style.display = "none";
