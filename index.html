@@ -26,7 +26,7 @@
       text-align: center;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       position: relative;
-      padding-top: 100px; /* Espacio para el logo */
+      padding-top: 100px;
     }
 
     h2 {
@@ -67,16 +67,16 @@
     }
 
     .option:hover {
-      background-color: #ffeb3b; /* Amarillo como un semáforo */
+      background-color: #ffeb3b;
     }
 
     .option.correct {
-      background-color: #28a745; /* Verde cuando es correcto */
+      background-color: #28a745;
       color: #fff;
     }
 
     .option.incorrect {
-      background-color: #dc3545; /* Rojo cuando es incorrecto */
+      background-color: #dc3545;
       color: #fff;
     }
 
@@ -93,9 +93,8 @@
       margin-bottom: 20px;
     }
 
-    /* Estilo para el botón de reinicio */
     .restart-btn {
-      background-color: #dc3545; /* Rojo semáforo */
+      background-color: #dc3545;
       color: white;
       border: none;
       padding: 15px 30px;
@@ -103,11 +102,11 @@
       border-radius: 10px;
       cursor: pointer;
       margin-top: 20px;
-      display: none; /* Se oculta inicialmente */
+      display: none;
     }
 
     .restart-btn:hover {
-      background-color: #b02a2a; /* Rojo más oscuro cuando se pasa el cursor */
+      background-color: #b02a2a;
     }
   </style>
 </head>
@@ -124,1780 +123,2162 @@
     <button class="restart-btn" id="restartBtn" onclick="reiniciarJuego()">Reiniciar Juego</button>
   </div>
 
+
   <script>
     const bancoPreguntas = [
   {
-    "pregunta": "En qué lugares está permitido estacionar",
-    "correcta": "A más de 10 metros de las señales de alto",
+    "pregunta": "¿Cuál es la velocidad permitida en zonas escolares durante horas de clase?",
+    "correcta": "30 km/h",
     "opciones": [
-      "15 metros",
-      "25 metros",
-      "A más de 10 metros de las señales de alto",
-      "20 metros"
+      "30 km/h",
+      "50 km/h",
+      "60 km/h",
+      "40 km/h"
     ]
   },
   {
-    "pregunta": "Cual es la velocidad máxima de circulación en las calles de las zonas urbanas",
-    "correcta": "40 km/h",
-    "opciones": [
-      "50 metros",
-      "55 metros",
-      "40 km/h",
-      "45 metros"
-    ]
-  },
-  {
-    "pregunta": "Como se denomina las luces que llevan los camiones en sus extremos superiores",
-    "correcta": "Luces pilotos",
-    "opciones": [
-      "Luces interiores del tablero.",
-      "Luces decorativas.",
-      "Luces pilotos",
-      "Luces de emergencia traseras."
-    ]
-  },
-  {
-    "pregunta": "Quienes deben llevar casco protector, cuando viajan en motocicleta",
-    "correcta": "El conductor y su acompañante",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "El conductor y su acompañante",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las maniobras permitidas en las autopistas  Rebasar a otro vehículo por el carril de velocidad 6- Que prohibiciones rigen para los peatones",
-    "correcta": "Detenerse en las aceras y formar tumultos",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Detenerse en las aceras y formar tumultos",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como está clasificada la señal de alto",
-    "correcta": "Reglamentaria",
-    "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Reglamentaria",
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Cuando se efectuara la audiencia en los casos de accidente de tránsito",
-    "correcta": "El día y la hora señalada con las partes que concurran",
-    "opciones": [
-      "El día y la hora señalada con las partes que concurran",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como se debe proceder cuando el semáforo tiene una flecha verde y la luz roja",
-    "correcta": "Los vehículos pueden continuar en la dirección que indica la flecha únicamente",
-    "opciones": [
-      "Los vehículos pueden continuar en la dirección que indica la flecha únicamente",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Que documentos debe portar obligatoriamente todo conductor en su vehículo? R licencia, póliza, registro vehicular, formato  único y definitivo de accidentes de trasmito y reglamento de transito  \\n11- Cual es la distancia mínima permitida para estacionar un vehículo cerca de un hidrante",
-    "correcta": "5 metros",
-    "opciones": [
-      "20 metros",
-      "5 metros",
-      "10 metros",
-      "15 metros"
-    ]
-  },
-  {
-    "pregunta": "Cual es el significado de una línea blanca entre cortada pintada sobre el pavimento",
-    "correcta": "Separación de carriles, en la misma  dirección",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Separación de carriles, en la misma  dirección"
-    ]
-  },
-  {
-    "pregunta": "Como se denomina una carretera",
-    "correcta": "Vía pública destinada al tránsito de vehículo de una población a otra",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Vía pública destinada al tránsito de vehículo de una población a otra",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Como se define una autopista",
-    "correcta": "Vía de circulación especialmente proyectadas, construidas y señalizada para la exclusiva  circulación de vehículo, y que reúne características especiales.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Vía de circulación especialmente proyectadas, construidas y señalizada para la exclusiva  circulación de vehículo, y que reúne características especiales.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Como se define vía pública",
-    "correcta": "Vía destinada al tránsito libre de vehículos, peatones y animales.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Vía destinada al tránsito libre de vehículos, peatones y animales.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Como se define todo tramo para el uso de peatones, que cruzan a través de las calles o avenidas",
-    "correcta": "Zona de peatones 17- Con que nombre se le conoce al área de uso de Público formado por la intersección de 2 vías o más?  Cruce",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Zona de peatones 17- Con que nombre se le conoce al área de uso de Público formado por la intersección de 2 vías o más?  Cruce",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad de circulación en las áreas próximas a las instalaciones deportivas de gran concurrencia",
-    "correcta": "Menos de 30 Km/hora (Anteriormente 20 Km)",
-    "opciones": [
-      "40 metros",
-      "Menos de 30 Km/hora (Anteriormente 20 Km)",
-      "35 metros",
-      "45 metros"
-    ]
-  },
-  {
-    "pregunta": "Que indica la luz roja del semáforo",
-    "correcta": "Detenerse",
-    "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta.",
-      "Otra opción que parece válida pero no lo es.",
-      "Detenerse"
-    ]
-  },
-  {
-    "pregunta": "Que indica la luz verde del semáforo",
-    "correcta": "Avanzar",
-    "opciones": [
-      "Avanzar",
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Que indica la luz amarilla del semáforo",
-    "correcta": "Precaución",
-    "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Precaución",
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo."
-    ]
-  },
-  {
-    "pregunta": "A qué autoridad se debe notificar cuando ocurre un accidente de tránsito",
-    "correcta": "A la policía de tránsito 23- En qué lugares está prohibido estacionar los vehículos? \\n En un carril de circulación y sobre un paso de peatones; frente a la escuela; frente a la salida de las calles y en la vía por  falta de combustible",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "A la policía de tránsito 23- En qué lugares está prohibido estacionar los vehículos? \\n En un carril de circulación y sobre un paso de peatones; frente a la escuela; frente a la salida de las calles y en la vía por  falta de combustible",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las velocidades máximas permitidas en las vía multicarriles",
-    "correcta": "80 km/h, carril izquierdo; 60 km/h carril central;  50 km/h carril derecho",
-    "opciones": [
-      "90 metros",
-      "80 km/h, carril izquierdo; 60 km/h carril central;  50 km/h carril derecho",
-      "85 metros",
-      "95 metros"
-    ]
-  },
-  {
-    "pregunta": "A qué velocidad deben conducir con luces bajas si en la carretera se les daña las luces largas",
-    "correcta": "antes no menos 55  Km/hora (ahora 50 km/hora)",
-    "opciones": [
-      "antes no menos 55  Km/hora (ahora 50 km/hora)",
-      "70 metros",
-      "65 metros",
-      "60 metros"
-    ]
-  },
-  {
-    "pregunta": "Cual es el deber del conductor si te encuentras lesionados en la vía aunque no esté implicado en el accidente",
-    "correcta": "transportar de inmediato al centro de atención a los lesionados que encuentres, dar parte a la policía, llamar a un centro de  salud.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "transportar de inmediato al centro de atención a los lesionados que encuentres, dar parte a la policía, llamar a un centro de  salud.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Cual es la definición de toda persona que transite a pie o en artefactos especiales manejado por ellos",
-    "correcta": "Peatón",
-    "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Peatón",
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Cual es la distancia prudente para cambiar luces altas por luces baja y evitar encandilar a otro conductor que viene de  frente",
-    "correcta": "no menor de 150 metros (en carreteras y autopistas),y no menor de 75 metros (calles y avenidas).",
-    "opciones": [
-      "160 metros",
-      "165 metros",
-      "155 metros",
-      "no menor de 150 metros (en carreteras y autopistas),y no menor de 75 metros (calles y avenidas)."
-    ]
-  },
-  {
-    "pregunta": "En que caso los conductores deberán disminuir las velocidades",
-    "correcta": "En zonas escolares, hospitales, parques, iglesias, en las terminales de transporte, cuando así lo indique las señales de  tránsito.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "En zonas escolares, hospitales, parques, iglesias, en las terminales de transporte, cuando así lo indique las señales de  tránsito."
-    ]
-  },
-  {
-    "pregunta": "Que debe hacer el conductor al acercarse un vehículo que lleve señales acústicas y luminosas",
-    "correcta": "ceder el paso, detener  tu vehículo si es necesario.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "ceder el paso, detener  tu vehículo si es necesario.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima al llegar a un centro escolar",
-    "correcta": "Menos de 30 km/h",
-    "opciones": [
-      "45 metros",
-      "Menos de 30 km/h",
-      "40 metros",
-      "35 metros"
-    ]
-  },
-  {
-    "pregunta": "Que debe hacer el conductor al retirarse del vehículo",
-    "correcta": "Apagar el encendido del motor, retirar las llaves, aplicar el freno de mano y cerrar las puertas con llaves. 33- Cual es la distancia mínima para estacionar un vehículo de un hidrante?  5 metros",
-    "opciones": [
-      "Apagar el encendido del motor, retirar las llaves, aplicar el freno de mano y cerrar las puertas con llaves. 33- Cual es la distancia mínima para estacionar un vehículo de un hidrante?  5 metros",
-      "43 metros",
-      "38 metros",
-      "48 metros"
-    ]
-  },
-  {
-    "pregunta": "A que distancia de un vehículo se debe estacionar de un vehículo de lado opuesto",
-    "correcta": "9 metros",
-    "opciones": [
-      "14 metros",
-      "24 metros",
-      "9 metros",
-      "19 metros"
-    ]
-  },
-  {
-    "pregunta": "Que debe hacer el conductor si le falla los frenos",
-    "correcta": "disminuir la velocidad a base de cambios, y usar el freno de mano.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "disminuir la velocidad a base de cambios, y usar el freno de mano.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Cuanto es la multa por no utilizar el cinturón de seguridad",
-    "correcta": "B/ 75.00 a B/.100.00",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "B/ 75.00 a B/.100.00",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Quien debe exigir el uso del cinturón de seguridad",
-    "correcta": "El conductor.",
-    "opciones": [
-      "El conductor.",
-      "Solamente el conductor.",
-      "Solo si hay niños presentes.",
-      "No es obligatorio en ciudad."
-    ]
-  },
-  {
-    "pregunta": "A que distancia se debe cambiar las luces altas a bajas para evitar encandilamiento",
-    "correcta": "150 metros",
-    "opciones": [
-      "165 metros",
-      "160 metros",
-      "155 metros",
-      "150 metros"
-    ]
-  },
-  {
-    "pregunta": "Que debe hacer un conductor si su visibilidad es anulada por encandilamiento",
-    "correcta": "Reducir la velocidad hasta parar el  vehículo.",
-    "opciones": [
-      "Reducir la velocidad hasta parar el  vehículo.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "A quien está obligado el conductor de vehículo a presentar la licencia de conducir, previa identificación, siempre que le sea  solicitada",
-    "correcta": "Al policía de tránsito y la autoridad competente",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Al policía de tránsito y la autoridad competente",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima en las carreteras de las zonas urbanas",
-    "correcta": "100 km/h.",
-    "opciones": [
-      "105 metros",
-      "100 km/h.",
-      "115 metros",
-      "110 metros"
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima en las autopistas de las zonas urbanas",
-    "correcta": "120 km/h.",
-    "opciones": [
-      "120 km/h.",
-      "135 metros",
-      "130 metros",
-      "125 metros"
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima en las calles de las zonas urbanas",
-    "correcta": "40 km/h",
-    "opciones": [
-      "45 metros",
-      "50 metros",
-      "40 km/h",
-      "55 metros"
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima en las avenidas de las zonas urbanas",
-    "correcta": "60 km/h",
-    "opciones": [
-      "65 metros",
-      "75 metros",
-      "70 metros",
-      "60 km/h"
-    ]
-  },
-  {
-    "pregunta": "Cual es el plazo concedido para presentar una apelación contra una resolución en los casos de accidente",
-    "correcta": "24 horas  después de la notificación",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "24 horas  después de la notificación",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Quienes no pueden viajar en los asientos delanteros",
-    "correcta": "menores de 5 años",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "menores de 5 años",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Cual es la velocidad máxima en las áreas residenciales",
-    "correcta": "25 km/h (Actualmente es de 40 Km)",
-    "opciones": [
-      "30 metros",
-      "25 km/h (Actualmente es de 40 Km)",
-      "35 metros"
-    ]
-  },
-  {
-    "pregunta": "Cuales son los exámenes que se practican para comprobar el estado de embriaguez de un conductor? el alcoholímetro \\n49- Que artefactos no deben transitar por las aceras",
-    "correcta": "bicicletas, motos y triciclos.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "bicicletas, motos y triciclos."
-    ]
-  },
-  {
-    "pregunta": "Por donde deben transitar obligatoriamente los peatones? R Las aceras, veredas y pasos elevados. 51- Que efecto produce el encandilar con luces altas a otro conductor’  Anulación de la visibilidad. \\n52- Cual de las siguientes infracciones menores tiene la multa más costosa",
-    "correcta": "velocidad excesiva.",
-    "opciones": [
-      "Luces de emergencia traseras.",
-      "Luces interiores del tablero.",
-      "velocidad excesiva.",
-      "Luces decorativas."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las obligaciones del conductor según el reglamento de tránsito",
-    "correcta": "ponerse el cinturón de seguridad, velar por la seguridad de sus pasajeros, portar la licencia de conducir.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "ponerse el cinturón de seguridad, velar por la seguridad de sus pasajeros, portar la licencia de conducir."
-    ]
-  },
-  {
-    "pregunta": "Cual es la norma por la cual se regula el uso de las vías de circulación en el territorio nacional de la República de Panamá",
-    "correcta": "Decreto Ejecutivo N° 640 del 27 de diciembre de 2006.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Decreto Ejecutivo N° 640 del 27 de diciembre de 2006.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "A quienes se aplica la reglamentación vigente en cuanto a la circulación por vías y carreteras en el territorio nacional",
-    "correcta": "Vehículos, aparatos, personas, animales sueltos o conducibles en rebaños.",
-    "opciones": [
-      "Vehículos, aparatos, personas, animales sueltos o conducibles en rebaños.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Cual es la definición de peatón según la norma que regula el uso de las vías",
-    "correcta": "Toda persona que transita a pie, incluyendo al impedido o niño que utilice algún artefacto para su movilización. 57- Que efecto produce la lluvia sobre el pavimento de la vía?  disminuye la adherencia.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Toda persona que transita a pie, incluyendo al impedido o niño que utilice algún artefacto para su movilización. 57- Que efecto produce la lluvia sobre el pavimento de la vía?  disminuye la adherencia."
-    ]
-  },
-  {
-    "pregunta": "Que documento deben portar en buen estado los conductores de vehículo?  El registro de propiedad vehicular. 59 Que documentos debe estar adecuado al tipo de vehículo que conduce",
-    "correcta": "Licencia",
-    "opciones": [
-      "Licencia",
-      "Carnet de vacunación.",
-      "Recibo del seguro médico.",
-      "Contrato de seguro de vida."
-    ]
-  },
-  {
-    "pregunta": "Que aspectos de seguridad deben mantener en óptimas condiciones los vehículos que circulan por las vías nacionales",
-    "correcta": "Filtros para los ruidos estáticos del motor y silenciador del tubo de escape.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Filtros para los ruidos estáticos del motor y silenciador del tubo de escape.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como debe quedar orientado un vehículo al ser estacionado",
-    "correcta": "En el sentido de circulación.",
-    "opciones": [
-      "En el sentido de circulación.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Cuando exige el registro de propiedad Vehicular Nacional la inscripción de cambios o modificaciones realizadas a un  vehículo",
-    "correcta": "Cuando se ha cambiado el color del vehículo, cuando se ha modificado el motor del vehículo y carrocería del  vehículo.",
-    "opciones": [
-      "Cuando se ha cambiado el color del vehículo, cuando se ha modificado el motor del vehículo y carrocería del  vehículo.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "A quienes exige las normas vigentes en materia de tránsito el uso del cinturón de seguridad",
-    "correcta": "Vehículo a motor exige ahora (al conductor y sus pasajeros como medida de seguridad) antes (Únicamente el conductor y el  pasajero del asiento delantero).",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Vehículo a motor exige ahora (al conductor y sus pasajeros como medida de seguridad) antes (Únicamente el conductor y el  pasajero del asiento delantero).",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Quien es la persona responsable ante la Autoridad del Tránsito, en caso de incumplimiento en la obligatoriedad del uso del  cinturón de seguridad",
-    "correcta": "El conductor del vehículo.",
-    "opciones": [
-      "El conductor del vehículo.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como podrán viajar los infantes menores de 5 años en un vehículo automotor",
-    "correcta": "Sentados atrás, protegidos en sillas  especiales, sujetadas con el cinturón de seguridad.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Sentados atrás, protegidos en sillas  especiales, sujetadas con el cinturón de seguridad."
-    ]
-  },
-  {
-    "pregunta": "Que requieren los vehículos que son utilizados para transportar gases comprimidos, licuados o diluidos a presión",
-    "correcta": "Estar acondicionados y dotados de artificios regulados por la oficina de seguridad del cuerpo de bomberos, y su respectiva  certificación.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Estar acondicionados y dotados de artificios regulados por la oficina de seguridad del cuerpo de bomberos, y su respectiva  certificación."
-    ]
-  },
-  {
-    "pregunta": "Que edad mínima de tener el conductor de un vehículo de tracción animal",
-    "correcta": "14 años.",
-    "opciones": [
-      "14 años.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta.",
-      "Otra opción que parece válida pero no lo es."
-    ]
-  },
-  {
-    "pregunta": "Quien es responsable de los daños que sufra un animal que se encuentre suelto en la vía pública y de los daños que cause  a terceros",
-    "correcta": "El dueño del animal.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "El dueño del animal."
-    ]
-  },
-  {
-    "pregunta": "Que tipo de vehículo requieren las luces denominadas pilotos (luz roja al frente en el extremo superior derecho y una verde  en el extremo izquierdo de un vehículo)",
-    "correcta": "Camiones de carga.",
-    "opciones": [
-      "Luces de emergencia traseras.",
-      "Luces interiores del tablero.",
-      "Luces decorativas.",
-      "Camiones de carga."
-    ]
-  },
-  {
-    "pregunta": "Quien determina las especificaciones a seguir por los responsables del revisado vehicular en el alineado de las luces del  vehículo",
-    "correcta": "La Autoridad de Tránsito Transporte Terrestre.",
-    "opciones": [
-      "La Autoridad de Tránsito Transporte Terrestre.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "A qué velocidad debe transitar con luces bajas, un vehículo que tuviese desperfecto en el sistema de luces altas, (en vías  insuficientemente iluminadas)",
-    "correcta": "No mayor que la velocidad mínima permitida.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "No mayor que la velocidad mínima permitida.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Que vehículos se clasifican como de transporte público colectivo",
-    "correcta": "Autobuses.",
-    "opciones": [
-      "Una alternativa plausible pero incorrecta.",
-      "Autobuses.",
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo."
-    ]
-  },
-  {
-    "pregunta": "Qué debe hacer el conductor afectado por el efecto encandilarte, cuando un conductor no realiza el cambio de luz alta a luz  baja",
-    "correcta": "Reducir la velocidad, hasta parar si es necesario.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Reducir la velocidad, hasta parar si es necesario.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las obligaciones de todo conductor de vehículo",
-    "correcta": "Portar en cualquier momento en que este manejando, su  licencia de conducir, transportar de inmediato al centro de atención médica más cercano a cualquier persona que atropelle o  lesione con su vehículo, en caso de colisión, si no hubiese lesionados graves, permanecer en el sitio del accidente con su  vehículo, hasta que el caso sea atendido por una autoridad competente.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Portar en cualquier momento en que este manejando, su  licencia de conducir, transportar de inmediato al centro de atención médica más cercano a cualquier persona que atropelle o  lesione con su vehículo, en caso de colisión, si no hubiese lesionados graves, permanecer en el sitio del accidente con su  vehículo, hasta que el caso sea atendido por una autoridad competente.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Por donde deberán circular los conductores de bicicletas, triciclos o motocicletas",
-    "correcta": "Lo más cerca posible del borde derecho  de la vía.",
-    "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Lo más cerca posible del borde derecho  de la vía.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Que tipo de vehículos requieren el uso del casco protector",
-    "correcta": "Motocicleta",
-    "opciones": [
-      "Motocicleta",
-      "Recomendado pero no obligatorio.",
-      "Solo el conductor debe llevarlo.",
-      "No es necesario en trayectos cortos."
-    ]
-  },
-  {
-    "pregunta": "Por donde deben circular las personas obligatoriamente cuando no existan las aceras, veredas, pasos peatonales y sitios  habilitados para su uso",
-    "correcta": "Circular por el lado izquierdo de la vía, fuera de la superficie de rodamiento y de frente a la dirección del tránsito vehicular. 78- Por donde deberá cruzar el peatón una vía, intersección o calle?  Por la línea de seguridad.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Circular por el lado izquierdo de la vía, fuera de la superficie de rodamiento y de frente a la dirección del tránsito vehicular. 78- Por donde deberá cruzar el peatón una vía, intersección o calle?  Por la línea de seguridad."
-    ]
-  },
-  {
-    "pregunta": "En que vía transitan los vehículos que tienen preferencia en la circulación",
-    "correcta": "La vía principal o avenida.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "La vía principal o avenida.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Qué vehículo tiene la prioridad de paso en una vía de dos carriles, cuando uno de ellos se encuentra en reparación o esta  obstruido",
-    "correcta": "El que tiene la vía libre.",
-    "opciones": [
-      "El que tiene la vía libre.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
-    ]
-  },
-  {
-    "pregunta": "Qué vehículo tiene prioridad de paso en 2 vías de igual jerarquía, (2 principales o 2 Secundarias)",
-    "correcta": "El que se encuentre  o que llegue por la derecha del otro.",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "El que se encuentre  o que llegue por la derecha del otro."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las reglas a seguir al rebasar por la izquierda",
-    "correcta": "Constatar que la vía de la izquierda este libre, tener suficiente visibilidad, usar señal acústica y luminosa, el rebase debe  efectuarse rápido.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Constatar que la vía de la izquierda este libre, tener suficiente visibilidad, usar señal acústica y luminosa, el rebase debe  efectuarse rápido."
-    ]
-  },
-  {
-    "pregunta": "Cuales son las reglas a seguir en las vías de 2 o más carriles",
-    "correcta": "puedes circular por carriles intermedios y por el centro  de éste.",
-    "opciones": [
-      "puedes circular por carriles intermedios y por el centro  de éste.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Cuáles son las reglas a seguir para circular en la autopista",
-    "correcta": "Usar el carril izquierdo solo para rebasar, no te puedes detener ni por pasajeros, ni por carga y los vehículos remolcados  abandonaran la vía en la primera salida.",
-    "opciones": [
-      "Usar el carril izquierdo solo para rebasar, no te puedes detener ni por pasajeros, ni por carga y los vehículos remolcados  abandonaran la vía en la primera salida.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como indica el cambio de dirección si las luces direccionales no funcionan",
-    "correcta": "Señales manuales",
-    "opciones": [
-      "Luces decorativas.",
-      "Luces interiores del tablero.",
-      "Luces de emergencia traseras.",
-      "Señales manuales"
-    ]
-  },
-  {
-    "pregunta": "A que distancia se puede encender fuego si un vehículo transporta dinamita",
-    "correcta": "antes 150 metros (ahora 15 metros) 87- Cual es la prioridad del conductor en todo momento?  Velar por la seguridad de las personas,",
-    "opciones": [
-      "160 metros",
-      "antes 150 metros (ahora 15 metros) 87- Cual es la prioridad del conductor en todo momento?  Velar por la seguridad de las personas,",
-      "165 metros",
-      "155 metros"
-    ]
-  },
-  {
-    "pregunta": "Que vehículos tienen preferencias en la vía",
-    "correcta": "Los vehículos que circulen por la avenida.",
-    "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Los vehículos que circulen por la avenida.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Que indican las señales redondas, fondo blanco y símbolos negros",
-    "correcta": "Una prohibición o una orden. 90- Que indican las señales azules o verdes?  Una información de lugares o servicios.",
-    "opciones": [
-      "Amarillas",
-      "Rojas",
-      "Una prohibición o una orden. 90- Que indican las señales azules o verdes?  Una información de lugares o servicios.",
-      "Blancas"
-    ]
-  },
-  {
-    "pregunta": "Que comunican las señales amarillas en forma de diamante",
-    "correcta": "Peligro",
-    "opciones": [
-      "Peligro",
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Como se define la acción de detener un vehículo en la vía pública para recibir y dejar pasajeros o carga",
-    "correcta": "Parar 93- Como se define la acción de colocar un vehículo por un largo periodo de tiempo en las áreas destinadas para tal fin?  Estacionar",
-    "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Parar 93- Como se define la acción de colocar un vehículo por un largo periodo de tiempo en las áreas destinadas para tal fin?  Estacionar",
-      "Aumentar la velocidad para no causar congestión."
-    ]
-  },
-  {
-    "pregunta": "Donde estarán accesibles a las partes los expedientes de los accidentes de tránsito",
-    "correcta": "Secretaria Judicial",
-    "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Secretaria Judicial",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Que entidad es la segunda instancia en los procesos administrativos sobre accidentes de tránsito",
-    "correcta": "El Municipio  correspondiente",
-    "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "El Municipio  correspondiente",
-      "Una alternativa plausible pero incorrecta."
-    ]
-  },
-  {
-    "pregunta": "Que harán los otros conductores al acercarse un vehículo de emergencia que lleve señales luminosas y acústicas  especiales",
-    "correcta": "Cederán el paso, pasando a ocupar una posición paralela y cercana al carril derecho.",
-    "opciones": [
-      "Cederán el paso, pasando a ocupar una posición paralela y cercana al carril derecho.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
-    ]
-  },
-  {
-    "pregunta": "Como se clasifican las señales de tránsito que tiene el fondo de color amarillo",
-    "correcta": "Preventivas",
-    "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta.",
-      "Preventivas",
-      "Una respuesta similar en forma, no en fondo."
-    ]
-  },
-  {
-    "pregunta": "Que debe hacer ante la luz roja encendida en las vías reguladas por semáforos",
+    "pregunta": "¿Qué indica la luz roja del semáforo?",
     "correcta": "Detenerse",
     "opciones": [
       "Detenerse",
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta."
+      "Encender luces de emergencia",
+      "Girar a la izquierda",
+      "Avanzar con precaución"
     ]
   },
   {
-    "pregunta": "Que deben hacer los conductores en las vías con semáforo al encenderse la luz verde",
-    "correcta": "Iniciar la marcha si la intersección  ha sido despejada.",
+    "pregunta": "¿Qué indica la luz verde del semáforo?",
+    "correcta": "Avanzar",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Iniciar la marcha si la intersección  ha sido despejada.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
+      "Avanzar",
+      "Detenerse completamente",
+      "Encender luces intermitentes",
+      "Girar sin detenerse"
     ]
   },
   {
-    "pregunta": "De qué color se pintarán los bordes de las aceras donde no se permite estacionar",
-    "correcta": "Amarillos",
+    "pregunta": "¿Qué indica la luz amarilla del semáforo?",
+    "correcta": "Precaución",
     "opciones": [
-      "Amarillas",
-      "Rojas",
-      "Verdes",
-      "Amarillos"
+      "Precaución",
+      "Detenerse obligatoriamente",
+      "Apagar las luces",
+      "Encender las luces largas"
     ]
   },
   {
-    "pregunta": "¿Quiénes están en la obligación de someterse a los exámenes y pruebas para determinar el estado de embriaguez, en  caso de accidente",
-    "correcta": "El conductor y el peatón involucrado.",
+    "pregunta": "¿Qué debe hacer un conductor si fallan los frenos?",
+    "correcta": "Reducir la velocidad con los cambios y usar el freno de mano",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "El conductor y el peatón involucrado.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Reducir la velocidad con los cambios y usar el freno de mano",
+      "Acelerar para ganar impulso",
+      "Pisar el freno repetidamente",
+      "Encender las luces y tocar la bocina"
     ]
   },
   {
-    "pregunta": "Quienes están obligados a indemnizar por los daños y perjuicios causados por un accidente de tránsito",
-    "correcta": "El conductor  y el propietario del vehículo",
+    "pregunta": "¿Cuál es la definición de vía pública?",
+    "correcta": "Vía destinada al tránsito libre de vehículos, peatones y animales",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "El conductor  y el propietario del vehículo",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Vía destinada al tránsito libre de vehículos, peatones y animales",
+      "Área exclusiva para comercio",
+      "Ruta cerrada al tráfico",
+      "Paso peatonal con prioridad"
     ]
   },
   {
-    "pregunta": "A qué entidad corresponde el juzgamiento y sanción por las faltas o infracciones al reglamento de tránsito (Decreto 640  del 27 de diciembre del 2006)",
-    "correcta": "Autoridad de Tránsito y Transporte Terrestre.",
+    "pregunta": "¿Qué es un paso de peatones?",
+    "correcta": "Zona marcada para que los peatones crucen la vía",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Autoridad de Tránsito y Transporte Terrestre.",
-      "Aumentar la velocidad para no causar congestión."
+      "Zona marcada para que los peatones crucen la vía",
+      "Área para estacionar temporalmente",
+      "Espacio reservado para ciclistas",
+      "Cruce exclusivo para transporte público"
     ]
   },
   {
-    "pregunta": "Que sanciones no admiten recurso de reconsideración",
-    "correcta": "Conducir con aliento alcohólico, embriaguez comprobada y  sin cinturón de seguridad.",
+    "pregunta": "¿Qué velocidad se permite cerca de instalaciones deportivas de gran concurrencia?",
+    "correcta": "Menos de 30 km/h",
     "opciones": [
-      "Conducir con aliento alcohólico, embriaguez comprobada y  sin cinturón de seguridad.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Menos de 30 km/h",
+      "60 km/h",
+      "45 km/h",
+      "50 km/h"
     ]
   },
   {
-    "pregunta": "Que señal reglamentaria tiene forma triangular",
+    "pregunta": "¿Qué debe hacer si un peatón cruza inesperadamente la vía?",
+    "correcta": "Detenerse inmediatamente",
+    "opciones": [
+      "Detenerse inmediatamente",
+      "Tocar la bocina y seguir",
+      "Acelerar para evitar frenar",
+      "Continuar si no hay riesgo visible"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal de tránsito en forma de triángulo invertido?",
     "correcta": "Ceda el paso",
     "opciones": [
       "Ceda el paso",
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es."
+      "Prohibido girar",
+      "Zona escolar",
+      "Cruce ferroviario"
     ]
   },
   {
-    "pregunta": "De que color son las luces de retroceso de un vehículo",
-    "correcta": "Blancas",
+    "pregunta": "¿Qué indica una línea continua en el centro de la vía?",
+    "correcta": "No adelantar",
     "opciones": [
-      "Amarillas",
-      "Verdes",
-      "Rojas",
-      "Blancas"
+      "No adelantar",
+      "Vía exclusiva para ciclistas",
+      "Preferencia peatonal",
+      "Cambios de carril permitidos"
     ]
   },
   {
-    "pregunta": "Que vehículo tendrán prioridad de paso",
-    "correcta": "Los vehículos que conduzcan enfermos al hospital, los que están al servicio del Presidente de la República, protección civil,  cruz roja nacional, bomberos y ambulancias.",
+    "pregunta": "¿Qué se debe hacer al llegar a un cruce sin semáforo?",
+    "correcta": "Detenerse y ceder el paso si es necesario",
     "opciones": [
-      "Amarillas",
-      "Los vehículos que conduzcan enfermos al hospital, los que están al servicio del Presidente de la República, protección civil,  cruz roja nacional, bomberos y ambulancias.",
-      "Verdes",
-      "Rojas"
+      "Detenerse y ceder el paso si es necesario",
+      "Avanzar rápidamente",
+      "Tocar la bocina y cruzar",
+      "Ignorar si no hay peatones"
     ]
   },
   {
-    "pregunta": "Cual de los dos vehículos que se acerquen simultáneamente a una intersección procedente de vías diferente, cederá el  paso",
-    "correcta": "El conductor que ve al otro por el lado derecho.",
+    "pregunta": "¿Qué elementos son obligatorios en una moto para circular?",
+    "correcta": "Espejos, luces y casco",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "El conductor que ve al otro por el lado derecho.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Espejos, luces y casco",
+      "Altavoces",
+      "Bocina de aire",
+      "Faros de neón"
     ]
   },
   {
-    "pregunta": "Cual es el periodo de uso de la placa de demostración",
-    "correcta": "antes 48 horas (ahora 5 días hábiles) 110- A que hora necesita salvoconducto los vehículos con placa oficial?  Después de la 6 p.m.",
+    "pregunta": "¿En qué situaciones se debe usar el cinturón de seguridad?",
+    "correcta": "En todo momento, en cualquier tipo de vía",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "antes 48 horas (ahora 5 días hábiles) 110- A que hora necesita salvoconducto los vehículos con placa oficial?  Después de la 6 p.m.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "En todo momento, en cualquier tipo de vía",
+      "Solo en autopistas",
+      "Solo en zonas urbanas",
+      "Cuando el vehículo supera los 60 km/h"
     ]
   },
   {
-    "pregunta": "Cuales son las prohibiciones a los conductores de vehículos de transporte público",
-    "correcta": "Maltratar de palabra a los pasajeros, usar un lenguaje soez y conducir con licencia inadecuada.",
+    "pregunta": "¿Qué debe hacer si el semáforo está dañado?",
+    "correcta": "Seguir las normas de prioridad y ceder el paso cuando corresponda",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Maltratar de palabra a los pasajeros, usar un lenguaje soez y conducir con licencia inadecuada."
+      "Seguir las normas de prioridad y ceder el paso cuando corresponda",
+      "Avanzar sin mirar",
+      "Tocar la bocina y seguir",
+      "Esperar a que lo reparen"
     ]
   },
   {
-    "pregunta": "Cuales son las prohibiciones para el uso de los vehículos? R- Usar un vehículo sin consentimiento del dueño. 113- Que prohibiciones establece el reglamento de tránsito en cuanto al uso de las vías",
-    "correcta": "Realizar competencias en las vías públicas, demorar sin necesidad el cruce de la vía, detenerse en las aceras. 114- Que se le prohíbe a todos los conductores de vehículo?  Pasar sobre una manguera contra incendio.",
+    "pregunta": "¿Qué documento autoriza a una persona a conducir?",
+    "correcta": "Licencia de conducir vigente",
     "opciones": [
-      "Realizar competencias en las vías públicas, demorar sin necesidad el cruce de la vía, detenerse en las aceras. 114- Que se le prohíbe a todos los conductores de vehículo?  Pasar sobre una manguera contra incendio.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
+      "Licencia de conducir vigente",
+      "Pasaporte",
+      "Cedula de identidad",
+      "Permiso de circulación"
     ]
   },
   {
-    "pregunta": "Por qué carril deben circular los vehículos de transporte de pasajero. Derecho \\n116- Quienes están obligados a obedecer las indicaciones de los agentes de tránsito",
-    "correcta": "Los peatones",
+    "pregunta": "¿Cuál es la edad mínima para obtener una licencia de conducir particular?",
+    "correcta": "18 años",
     "opciones": [
-      "Los peatones",
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo."
+      "18 años",
+      "16 años",
+      "21 años",
+      "20 años"
     ]
   },
   {
-    "pregunta": "Como se castigan las infracciones que se cometen al reglamento de tránsito",
-    "correcta": "Amonestaciones o multas.",
+    "pregunta": "¿Qué color identifica a los taxis en Panamá?",
+    "correcta": "Amarillo con franja lateral",
     "opciones": [
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "Amonestaciones o multas."
+      "Amarillo con franja lateral",
+      "Blanco con letras rojas",
+      "Rojo con azul",
+      "Verde con negro"
     ]
   },
   {
-    "pregunta": "Cuales son los sitio peligroso donde se prohíbe a los conductores detenerse o estacionarse",
-    "correcta": "Puentes, túneles y curvas.",
+    "pregunta": "¿Qué debe hacer al escuchar una sirena de emergencia?",
+    "correcta": "Ceder el paso inmediatamente",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Puentes, túneles y curvas.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Ceder el paso inmediatamente",
+      "Acelerar para no estorbar",
+      "Detenerse en seco",
+      "Cambiar de carril sin señalizar"
     ]
   },
   {
-    "pregunta": "Que le está prohibido a los vehículos comerciales y de transporte de empleados",
-    "correcta": "Transportar pasajeros pagados.",
+    "pregunta": "¿Qué indica una señal de “Prohibido girar a la izquierda”?",
+    "correcta": "Está prohibido girar en esa dirección",
     "opciones": [
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "Transportar pasajeros pagados."
+      "Está prohibido girar en esa dirección",
+      "Solo se permite girar a la izquierda",
+      "Puede girar si hay espacio",
+      "Prohibido estacionar",
+      "Preguntas corregidas 21–40"
     ]
   },
   {
-    "pregunta": "Cual es el color del fondo de las señales informativas",
-    "correcta": "Azules y verdes",
+    "pregunta": "¿Qué significa una señal de tránsito con un círculo rojo y fondo blanco?",
+    "correcta": "Prohibición o restricción",
     "opciones": [
-      "Rojas",
-      "Blancas",
-      "Amarillas",
-      "Azules y verdes"
+      "Prohibición o restricción",
+      "Advertencia de peligro",
+      "Señal informativa",
+      "Permiso especial"
     ]
   },
   {
-    "pregunta": "Que permiten la regulación sobre los vehículos que transportan sustancias peligrosas",
-    "correcta": "Inspección y certificado del  cuerpo de bomberos.",
+    "pregunta": "¿Qué documento debe portar el conductor del vehículo en todo momento?",
+    "correcta": "Licencia de conducir",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Inspección y certificado del  cuerpo de bomberos."
+      "Licencia de conducir",
+      "Pasaporte",
+      "Cédula de identidad",
+      "Contrato de compraventa"
     ]
   },
   {
-    "pregunta": "Como se conocen las faltas que cometen los conductores al reglamento de tránsito",
-    "correcta": "Infracciones menores. 123- Como debe controlarse la velocidad en pendiente descendiente?  Con el motor",
+    "pregunta": "¿Qué indica una señal con una “P” tachada?",
+    "correcta": "Prohibido estacionar",
     "opciones": [
-      "Infracciones menores. 123- Como debe controlarse la velocidad en pendiente descendiente?  Con el motor",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Prohibido estacionar",
+      "Estacionamiento permitido",
+      "Zona de carga",
+      "Punto de control"
     ]
   },
   {
-    "pregunta": "Como se estaciona las bicicletas",
-    "correcta": "Sobre la acera colocada en bastidores especiales para tal fin 125- Cuales son las reglas a seguir para rebasar a otro vehículo? \\n Tener la visibilidad suficiente, advertir al que le precede, mediante señales acústica y luminosa y verificar que ningún que lo  siga lo está rebasando.",
+    "pregunta": "¿Qué medida preventiva se debe tomar en caso de neblina?",
+    "correcta": "Encender luces bajas",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Sobre la acera colocada en bastidores especiales para tal fin 125- Cuales son las reglas a seguir para rebasar a otro vehículo? \\n Tener la visibilidad suficiente, advertir al que le precede, mediante señales acústica y luminosa y verificar que ningún que lo  siga lo está rebasando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Encender luces bajas",
+      "Usar luces altas",
+      "Tocar la bocina constantemente",
+      "Acelerar para salir rápido de la zona"
     ]
   },
   {
-    "pregunta": "Como deben quedar las ruedas de los vehículos al estacionarse",
-    "correcta": "Paralela a la orilla de las vías",
+    "pregunta": "¿Qué debe hacer el conductor al llegar a un paso peatonal con personas esperando cruzar?",
+    "correcta": "Detenerse y ceder el paso",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Paralela a la orilla de las vías"
+      "Detenerse y ceder el paso",
+      "Acelerar antes de que crucen",
+      "Tocar la bocina",
+      "Continuar si tiene preferencia"
     ]
   },
   {
-    "pregunta": "¿Por qué deben colocarse en ángulo con el cordón de las aceras las ruedas delanteras del vehículo, al estacionarse en  una pendiente",
-    "correcta": "Para evitar deslizamiento",
+    "pregunta": "¿Cuándo se puede utilizar el celular mientras se conduce?",
+    "correcta": "Nunca, a menos que sea con manos libres",
     "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta.",
-      "Para evitar deslizamiento"
+      "Nunca, a menos que sea con manos libres",
+      "Siempre que no haya tráfico",
+      "Solo en autopistas",
+      "En zonas rurales"
     ]
   },
   {
-    "pregunta": "Para que se utilizan las líneas amarillas entrecortadas sobre el pavimento",
-    "correcta": "Para separa los carriles que circulan en  dirección opuesta.",
+    "pregunta": "¿Qué vehículo tiene prioridad en una glorieta?",
+    "correcta": "El que ya circula dentro de la glorieta",
     "opciones": [
-      "Para separa los carriles que circulan en  dirección opuesta.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "El que ya circula dentro de la glorieta",
+      "El que llega desde la derecha",
+      "El más grande",
+      "El más rápido"
     ]
   },
   {
-    "pregunta": "De qué color son las luces de freno de un vehículo",
-    "correcta": "Rojas",
+    "pregunta": "¿Cuál es la distancia mínima al estacionar cerca de una esquina?",
+    "correcta": "5 metros",
     "opciones": [
-      "Verdes",
-      "Amarillas",
-      "Blancas",
-      "Rojas"
-    ]
-  },
-  {
-    "pregunta": "A que distancia de una esquina se deben estacionar los vehículos",
-    "correcta": "Más de 5 metros",
-    "opciones": [
-      "15 metros",
-      "Más de 5 metros",
+      "5 metros",
+      "1 metro",
       "10 metros",
-      "20 metros"
+      "2 metros"
     ]
   },
   {
-    "pregunta": "Cual es el significado de la señal preventiva que muestra una figura humana en movimiento",
-    "correcta": "Peatones en la vía 132- De qué color son las luces direccionales de un vehículo?  Amarillas",
+    "pregunta": "¿Cuándo se deben encender las luces del vehículo?",
+    "correcta": "Desde el anochecer hasta el amanecer",
     "opciones": [
-      "Blancas",
-      "Peatones en la vía 132- De qué color son las luces direccionales de un vehículo?  Amarillas",
-      "Verdes",
-      "Rojas"
+      "Desde el anochecer hasta el amanecer",
+      "Solo en la autopista",
+      "Solo en días nublados",
+      "Cuando se superen los 50 km/h"
     ]
   },
   {
-    "pregunta": "Cual es el significado de la señal preventiva que muestra 2 figuras humanas en movimiento",
-    "correcta": "Zona escolar. 134- Que indica la señal que muestra una cruz roja?  primeros auxilios",
+    "pregunta": "¿Qué indica una señal de tránsito en forma de rombo?",
+    "correcta": "Advertencia de peligro",
     "opciones": [
-      "Zona escolar. 134- Que indica la señal que muestra una cruz roja?  primeros auxilios",
-      "Amarillas",
-      "Rojas",
-      "Verdes"
+      "Advertencia de peligro",
+      "Prohibición de acceso",
+      "Zona de descanso",
+      "Paso obligatorio"
     ]
   },
   {
-    "pregunta": "Que indica la señal que muestra la figura de un camión dentro de un circulo de color rojo con una franja roja que atraviesa  la figura",
-    "correcta": "Circulación prohibida para vehículo de carga.",
+    "pregunta": "¿Qué debe hacer si su vehículo se avería en una vía?",
+    "correcta": "Encender luces intermitentes y colocar triángulo reflectivo",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Circulación prohibida para vehículo de carga.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
+      "Encender luces intermitentes y colocar triángulo reflectivo",
+      "Detenerse sin señalización",
+      "Tocar la bocina",
+      "Llamar al seguro sin moverse"
     ]
   },
   {
-    "pregunta": "Que tipo de luces deben tener los remolques y semirremolques conectados al vehículo principal",
-    "correcta": "Luces de freno",
+    "pregunta": "¿Qué significan dos líneas amarillas continuas en el centro de la vía?",
+    "correcta": "Prohibido adelantar en ambos sentidos",
     "opciones": [
-      "Luces de emergencia traseras.",
-      "Luces de freno",
-      "Luces interiores del tablero.",
-      "Luces decorativas."
+      "Prohibido adelantar en ambos sentidos",
+      "Vía exclusiva para transporte público",
+      "Zona escolar",
+      "Cruce de ferrocarril"
     ]
   },
   {
-    "pregunta": "En qué circunstancias se permite circular en marcha atrás",
-    "correcta": "En calle sin salida, para estacionarse y para salir de un  garaje.",
+    "pregunta": "¿Qué debe hacer si se encuentra con un vehículo de emergencia en operación?",
+    "correcta": "Detenerse o apartarse para ceder el paso",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "En calle sin salida, para estacionarse y para salir de un  garaje.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Detenerse o apartarse para ceder el paso",
+      "Encender luces intermitentes",
+      "Continuar normalmente",
+      "Aumentar la velocidad"
     ]
   },
   {
-    "pregunta": "Que tipo de sustancias provocan la disminución de las facultades psicofísicas",
-    "correcta": "Bebidas alcohólicas",
+    "pregunta": "¿Qué debe hacer cuando se aproxima a un cruce con semáforo en amarillo?",
+    "correcta": "Reducir la velocidad y prepararse para detenerse",
     "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta.",
-      "Otra opción que parece válida pero no lo es.",
-      "Bebidas alcohólicas"
+      "Reducir la velocidad y prepararse para detenerse",
+      "Acelerar para pasar",
+      "Detenerse sin mirar",
+      "Continuar sin cambiar velocidad"
     ]
   },
   {
-    "pregunta": "Para que se realiza la revisión periódica de los vehículos a motor",
-    "correcta": "Para determinar su estado de seguridad",
+    "pregunta": "¿Qué indica una luz intermitente roja en un semáforo?",
+    "correcta": "Detenerse y luego avanzar con precaución",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Para determinar su estado de seguridad",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Detenerse y luego avanzar con precaución",
+      "Prohibido girar",
+      "Ceder el paso sin detenerse",
+      "Vía exclusiva"
     ]
   },
   {
-    "pregunta": "Que tipo de iluminación deben tener las bicicletas",
-    "correcta": "luz blanca o amarilla al frente y cinta reflectiva en los pedales.",
+    "pregunta": "¿Qué acción es obligatoria al cambiar de carril?",
+    "correcta": "Usar direccionales o luces intermitentes",
     "opciones": [
-      "Verdes",
-      "Amarillas",
-      "luz blanca o amarilla al frente y cinta reflectiva en los pedales.",
-      "Rojas"
+      "Usar direccionales o luces intermitentes",
+      "Tocar la bocina",
+      "Mirar solo por el espejo retrovisor",
+      "Hacerlo rápidamente"
     ]
   },
   {
-    "pregunta": "Cual es el significado de 2 líneas amarillas continuas o sólidas sobre el pavimento’  Prohibido girar sobre las líneas \\n142- ¿Cuál es el significado de 2 líneas amarilla sobre el pavimento, de las cuales una es continua o sólida y la otra es  entrecortada",
-    "correcta": "Puede girar del lado de la línea entre cortada.",
+    "pregunta": "¿Qué es una zona de carga y descarga?",
+    "correcta": "Área destinada al manejo temporal de mercancías",
     "opciones": [
-      "Puede girar del lado de la línea entre cortada.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Área destinada al manejo temporal de mercancías",
+      "Espacio para estacionar libremente",
+      "Paso peatonal",
+      "Cruce escolar"
     ]
   },
   {
-    "pregunta": "Cual es el significado de la señal con fondo amarillo que tiene la figura de un venado",
-    "correcta": "Advierte que hay animales  silvestres en el área.",
+    "pregunta": "¿Qué se debe hacer en caso de accidente sin heridos?",
+    "correcta": "Retirar los vehículos de la vía si es seguro hacerlo",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Advierte que hay animales  silvestres en el área.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Retirar los vehículos de la vía si es seguro hacerlo",
+      "No moverlos hasta que llegue la policía",
+      "Salir del vehículo gritando ayuda",
+      "Llamar a un mecánico"
     ]
   },
   {
-    "pregunta": "¿Que se debe hacer, si un vehículo sufre desperfecto sobre la vía",
-    "correcta": "Retirarlo de la corriente principal de circulación",
+    "pregunta": "¿Qué vehículo tiene prioridad en una intersección sin señalización?",
+    "correcta": "El que viene por la derecha",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Retirarlo de la corriente principal de circulación",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "El que viene por la derecha",
+      "El más rápido",
+      "El más grande",
+      "El primero en tocar la bocina"
     ]
   },
   {
-    "pregunta": "Cual es el significado de la señal que muestra una X roja dentro de un círculo rojo",
-    "correcta": "No pare",
+    "pregunta": "¿Qué indica una señal de “No virar en U”?",
+    "correcta": "Prohibido realizar giros en U en esa zona",
     "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta.",
-      "No pare",
-      "Una respuesta similar en forma, no en fondo."
+      "Prohibido realizar giros en U en esa zona",
+      "Puede girar solo si hay poco tráfico",
+      "Permitido con precaución",
+      "Obligatorio continuar recto",
+      "Preguntas corregidas 41–60"
     ]
   },
   {
-    "pregunta": "Cuales son las emanaciones contaminantes del ambiente que se prohíben emitan los vehículos",
-    "correcta": "Gases, humos y  ruidos",
+    "pregunta": "¿Qué debe hacer al ver una señal de “Zona escolar”?",
+    "correcta": "Reducir la velocidad y estar atento a los peatones",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Gases, humos y  ruidos"
+      "Reducir la velocidad y estar atento a los peatones",
+      "Acelerar para pasar rápido",
+      "Tocar la bocina repetidamente",
+      "Detenerse en seco"
     ]
   },
   {
-    "pregunta": "Que elementos deben ser utilizados para remolcar vehículos",
-    "correcta": "Grúas",
+    "pregunta": "¿Qué elemento es obligatorio para los ciclistas durante la noche?",
+    "correcta": "Luces delanteras y reflectores traseros",
     "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta.",
-      "Grúas",
-      "Otra opción que parece válida pero no lo es."
+      "Luces delanteras y reflectores traseros",
+      "Bocina",
+      "Ropa de colores vivos",
+      "Zapatos reflectantes"
     ]
   },
   {
-    "pregunta": "Cuales son los requisitos para inscribir un vehículo a motor",
-    "correcta": "Que sean examinados por talleres autorizados. 149- De que color debe ser la luz delantera de los triciclos?  Blanca",
+    "pregunta": "¿Qué tipo de línea permite adelantar en la vía?",
+    "correcta": "Línea discontinua",
     "opciones": [
-      "Rojas",
-      "Amarillas",
-      "Que sean examinados por talleres autorizados. 149- De que color debe ser la luz delantera de los triciclos?  Blanca",
-      "Verdes"
+      "Línea discontinua",
+      "Línea continua",
+      "Doble línea continua",
+      "Línea blanca lateral"
     ]
   },
   {
-    "pregunta": "Cual es el significado de la señal que muestra la letra “E” dentro de un círculo rojo, que tiene una franja diagonal roja",
-    "correcta": "Prohibido estacionarse",
+    "pregunta": "¿Qué debe hacer al acercarse a un cruce ferroviario sin barrera?",
+    "correcta": "Reducir la velocidad y asegurarse de que no venga el tren",
     "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo.",
-      "Una alternativa plausible pero incorrecta.",
-      "Prohibido estacionarse"
+      "Reducir la velocidad y asegurarse de que no venga el tren",
+      "Acelerar para evitar quedar atrapado",
+      "Detenerse siempre",
+      "Ignorar si no hay señal"
     ]
   },
   {
-    "pregunta": "- Su vehículo se desvía hacia un lado cuando usted frena. ¿Cuál es la falla más probable",
-    "correcta": "Frenos mal ajustados. 152.- ¿Cómo puede prevenir usted el riesgo de incendio de su vehículo?  Revisando su vehículo ante cualquier olor a  gasolina extraño o manteniéndolo en buenas condiciones eléctricas.",
+    "pregunta": "¿Qué indica una señal con un peatón cruzando?",
+    "correcta": "Paso peatonal cercano",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Frenos mal ajustados. 152.- ¿Cómo puede prevenir usted el riesgo de incendio de su vehículo?  Revisando su vehículo ante cualquier olor a  gasolina extraño o manteniéndolo en buenas condiciones eléctricas.",
-      "Aumentar la velocidad para no causar congestión."
+      "Paso peatonal cercano",
+      "Zona de estacionamiento",
+      "Vía sin salida",
+      "Prohibido el paso"
     ]
   },
   {
-    "pregunta": "- ¿Qué significa esta luz de advertencia en el panel de instrumentos",
-    "correcta": "Freno de mano puesto o falta de líquido de freno,  falta de aceite, batería descargándose, luces intermitentes de advertencia",
+    "pregunta": "¿Qué se considera una infracción de tránsito grave?",
+    "correcta": "Conducir en estado de embriaguez",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Freno de mano puesto o falta de líquido de freno,  falta de aceite, batería descargándose, luces intermitentes de advertencia"
+      "Conducir en estado de embriaguez",
+      "No lavar el vehículo",
+      "Usar gafas de sol mientras se conduce",
+      "Tener una ventana bajada"
     ]
   },
   {
-    "pregunta": "- Es esencial que la presión de los neumáticos sea chequeada regularmente. ¿Cuándo se debe hacer esto",
-    "correcta": "Cuando los  neumáticos están fríos.",
+    "pregunta": "¿Cuál es la velocidad máxima en zonas residenciales?",
+    "correcta": "40 km/h",
     "opciones": [
-      "Cuando los  neumáticos están fríos.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "40 km/h",
+      "60 km/h",
+      "50 km/h",
+      "70 km/h"
     ]
   },
   {
-    "pregunta": "- La presión de los neumáticos debe revisarse:  Cuando los neumáticos están fríos. \\n156.- ¿Cuál de estos líquidos, en el caso de estar en un nivel bajo, podría causar un accidente?  El líquido de freno. \\n157.- Frente a una situación normal, ¿cuál es la forma más segura de frenar",
-    "correcta": "Frenando suavemente, luego un poco más  fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse. \\n158¿Cuándo usaría usted las luces intermitentes de advertencia de peligro? \\n Cuando allá un accidente y este obstruyendo el tránsito.",
+    "pregunta": "¿Qué debe hacer si un semáforo está en rojo, pero un agente de tránsito le indica avanzar?",
+    "correcta": "Obedecer al agente",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Frenando suavemente, luego un poco más  fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse. \\n158¿Cuándo usaría usted las luces intermitentes de advertencia de peligro? \\n Cuando allá un accidente y este obstruyendo el tránsito.",
-      "Aumentar la velocidad para no causar congestión."
+      "Obedecer al agente",
+      "Esperar que cambie la luz",
+      "Tocar la bocina",
+      "Ignorar ambos"
     ]
   },
   {
-    "pregunta": "¿Cuándo usaría usted las luces de advertencia de peligro de su vehículo",
-    "correcta": "Para dejar pasar a un peatón.",
+    "pregunta": "¿Qué documento debe tener vigente el vehículo para circular legalmente?",
+    "correcta": "Revisión vehicular",
     "opciones": [
-      "Para dejar pasar a un peatón.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Revisión vehicular",
+      "Tarjeta de regalo",
+      "Factura de compra",
+      "Certificado de pintura"
     ]
   },
   {
-    "pregunta": "- Las luces de advertencia de peligro deberían ser usadas:  Para advertir a quienes vienen detrás de un peligro que hay  más adelante. \\n161.- Usted se ha quedado detenido justo al medio de un cruce ferroviario con sistema automático de señales y barreras y no  puede echar a andar el motor nuevamente. La campanilla del cruce comienza a sonar. ¿Qué debería hacer usted",
-    "correcta": "Salir del vehículo y alejarse de él.",
+    "pregunta": "¿Cuándo se debe renovar la licencia de conducir?",
+    "correcta": "Antes de la fecha de vencimiento",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Salir del vehículo y alejarse de él."
+      "Antes de la fecha de vencimiento",
+      "Cada vez que se viaje",
+      "Solo al cambiar de vehículo",
+      "Cuando la policía lo solicite"
     ]
   },
   {
-    "pregunta": "- ¿Por qué los neumáticos deben mantenerse a la presión indicada por el fabricante",
-    "correcta": "Para ayudar a evitar que el automóvil se desnivele, y desgaste los neumáticos.",
+    "pregunta": "¿Qué significa una señal azul con una letra “E”?",
+    "correcta": "Estacionamiento permitido",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Para ayudar a evitar que el automóvil se desnivele, y desgaste los neumáticos."
+      "Estacionamiento permitido",
+      "Entrada exclusiva",
+      "Emergencia",
+      "Estacionamiento prohibido"
     ]
   },
   {
-    "pregunta": "- ¿A qué se debe un alto consumo de combustible",
-    "correcta": "Frecuentes frenadas y aceleraciones. O falta de mantenimiento del vehículo \\n164 - Uno de sus neumáticos traseros se revienta mientras usted conduce. ¿Cuáles 2 cosas debe hacer usted?  Detenerse lentamente al costado de la vía.  \\nGirar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo.",
+    "pregunta": "¿Qué debe hacer si su vehículo presenta una falla mecánica en plena vía?",
+    "correcta": "Estacionar en lugar seguro y señalizar",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Frecuentes frenadas y aceleraciones. O falta de mantenimiento del vehículo \\n164 - Uno de sus neumáticos traseros se revienta mientras usted conduce. ¿Cuáles 2 cosas debe hacer usted?  Detenerse lentamente al costado de la vía.  \\nGirar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Estacionar en lugar seguro y señalizar",
+      "Tocar la bocina y seguir",
+      "Esperar en medio de la calle",
+      "Llamar a un taxi y abandonar el auto"
     ]
   },
   {
-    "pregunta": "- ¿Cuáles 2 cosas debe usted hacer si se le revienta un neumático delantero",
-    "correcta": "Frenar suavemente o dejar que el  vehículo siga hasta detenerse. Sostener firmemente el volante manteniendo la trayectoria.",
+    "pregunta": "¿Qué debe hacer si ve una señal de “Ceda el paso”?",
+    "correcta": "Reducir velocidad y dejar pasar si hay otros vehículos",
     "opciones": [
-      "Frenar suavemente o dejar que el  vehículo siga hasta detenerse. Sostener firmemente el volante manteniendo la trayectoria.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Reducir velocidad y dejar pasar si hay otros vehículos",
+      "Avanzar sin detenerse",
+      "Detenerse obligatoriamente",
+      "Acelerar rápidamente"
     ]
   },
   {
-    "pregunta": ".¿Cuáles 2 de las siguientes afirmaciones son verdaderas",
-    "correcta": "Un sistema de escape de gases oxidado puede hacer que penetre monóxido de carbono al interior del vehículo. Los gases de escape contienen monóxido de carbono, que carece de olor y es incoloro.",
+    "pregunta": "¿Qué significa una línea discontinua blanca en el pavimento?",
+    "correcta": "Permite cambiar de carril",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Un sistema de escape de gases oxidado puede hacer que penetre monóxido de carbono al interior del vehículo. Los gases de escape contienen monóxido de carbono, que carece de olor y es incoloro.",
-      "Aumentar la velocidad para no causar congestión."
+      "Permite cambiar de carril",
+      "Prohíbe adelantar",
+      "Zona exclusiva de peatones",
+      "Cambio de sentido obligatorio"
     ]
   },
   {
-    "pregunta": "- ¿Cuáles 2 de las siguientes afirmaciones son verdaderas",
-    "correcta": "Los frenos antibloqueo tienen la ventaja de impedir que las ruedas queden bloqueadas al frenar fuertemente. El líquido de frenos no se consume y si disminuye es porque hay algún defecto.",
+    "pregunta": "¿Qué vehículos deben llevar extintor?",
+    "correcta": "Todos los vehículos motorizados",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Los frenos antibloqueo tienen la ventaja de impedir que las ruedas queden bloqueadas al frenar fuertemente. El líquido de frenos no se consume y si disminuye es porque hay algún defecto.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Todos los vehículos motorizados",
+      "Solo buses",
+      "Bicicletas",
+      "Vehículos eléctricos únicamente"
     ]
   },
   {
-    "pregunta": "- ¿Qué debe hacer usted cuando va en una fila de autos",
-    "correcta": "Debe mantener un espacio suficiente respecto del vehículo que va delante de usted de modo de posibilitar que otro vehículo  lo adelante a usted e ingrese a dicho espacio. \\nDebe mirar a buena distancia hacia adelante, eventualmente a través de los cristales de los otros vehículos, a fin de poder  moderar la velocidad a tiempo si alguien frena. \\nDebe mantenerse atento a los vehículos que van tanto delante como detrás de él.",
+    "pregunta": "¿Cuál es el nivel máximo de alcohol permitido para conductores particulares?",
+    "correcta": "0.0% a 0.05%",
     "opciones": [
-      "Debe mantener un espacio suficiente respecto del vehículo que va delante de usted de modo de posibilitar que otro vehículo  lo adelante a usted e ingrese a dicho espacio. \\nDebe mirar a buena distancia hacia adelante, eventualmente a través de los cristales de los otros vehículos, a fin de poder  moderar la velocidad a tiempo si alguien frena. \\nDebe mantenerse atento a los vehículos que van tanto delante como detrás de él.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión."
+      "0.0% a 0.05%",
+      "0.1%",
+      "0.2%",
+      "No hay límite"
     ]
   },
   {
-    "pregunta": ".- ¿Cuál de estos líquidos, en el caso de estar en un nivel bajo, podría causar un accidente",
-    "correcta": "El líquido de freno. 170- .¿Qué es lo más importante para evitar chocar al vehículo que va adelante? \\n Mantener una adecuada distancia de separación entre vehículos.",
+    "pregunta": "¿Qué indica una señal de “Pare”?",
+    "correcta": "Detenerse completamente",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "El líquido de freno. 170- .¿Qué es lo más importante para evitar chocar al vehículo que va adelante? \\n Mantener una adecuada distancia de separación entre vehículos.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Detenerse completamente",
+      "Seguir con precaución",
+      "Cruce ferroviario",
+      "Zona de curvas"
     ]
   },
   {
-    "pregunta": "De los siguientes factores, ¿cuál es el que con mayor frecuencia se presenta en los accidentes de tránsito",
-    "correcta": "Los errores de los conductores. O distracción en el manejo",
+    "pregunta": "¿Qué debe revisar antes de iniciar un viaje largo?",
+    "correcta": "Niveles de aceite, frenos, llantas y luces",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Los errores de los conductores. O distracción en el manejo",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Niveles de aceite, frenos, llantas y luces",
+      "Solo la música",
+      "El color del auto",
+      "El tipo de combustible"
     ]
   },
   {
-    "pregunta": ".De las siguientes afirmaciones, ¿cuál o cuáles es(son) verdadera(s)",
-    "correcta": "a) El factor humano es el principal causante de que surjan situaciones de riesgo en el tránsito. b) La falta de atención a las condiciones del tránsito es una de las principales causa de accidentes. c) Un conductor que va con mucha prisa tiende a subestimar los riesgos. \\nd) Discutir con alguien o estar pendiente de la música de la radio, aumenta las posibilidades de pasar por alto circunstancias  importantes en el tránsito",
+    "pregunta": "¿Qué acción es obligatoria al detenerse en un semáforo?",
+    "correcta": "Permanecer tras la línea de pare",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "a) El factor humano es el principal causante de que surjan situaciones de riesgo en el tránsito. b) La falta de atención a las condiciones del tránsito es una de las principales causa de accidentes. c) Un conductor que va con mucha prisa tiende a subestimar los riesgos. \\nd) Discutir con alguien o estar pendiente de la música de la radio, aumenta las posibilidades de pasar por alto circunstancias  importantes en el tránsito"
+      "Permanecer tras la línea de pare",
+      "Apagar el motor",
+      "Encender luces altas",
+      "Bajarse a revisar"
     ]
   },
   {
-    "pregunta": ".De las siguientes afirmaciones, ¿cuál o cuáles es(son) verdadera(s)",
-    "correcta": "a) El tener una buena visión es imprescindible para poder captar las diversas situaciones que se presentan al conducir. b) Existe un alto riesgo de que los conductores cuyo campo visual no es lo suficientemente amplio, no alcancen a reaccionar a tiempo ante peligros provenientes de los lados. \\nc) Si usted conduce durante un largo tiempo en condiciones difíciles, puede tener problemas para apreciar correctamente lo  que ve y, por lo tanto, tomar decisiones equivocadas.",
+    "pregunta": "¿Qué indica una señal triangular con borde rojo y fondo blanco?",
+    "correcta": "Precaución o ceder el paso",
     "opciones": [
-      "a) El tener una buena visión es imprescindible para poder captar las diversas situaciones que se presentan al conducir. b) Existe un alto riesgo de que los conductores cuyo campo visual no es lo suficientemente amplio, no alcancen a reaccionar a tiempo ante peligros provenientes de los lados. \\nc) Si usted conduce durante un largo tiempo en condiciones difíciles, puede tener problemas para apreciar correctamente lo  que ve y, por lo tanto, tomar decisiones equivocadas.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión."
+      "Precaución o ceder el paso",
+      "Ruta cerrada",
+      "Estacionamiento exclusivo",
+      "Prohibido circular",
+      "Preguntas corregidas 61–80"
     ]
   },
   {
-    "pregunta": "¿Qué consejo daría usted a un conductor que ha ingerido bebidas alcohólicas en una fiesta",
-    "correcta": "Que no maneje y que se vuelva a casa en taxi.",
+    "pregunta": "¿Qué significa una señal circular con una bicicleta dentro y una línea roja diagonal?",
+    "correcta": "Prohibido el paso a bicicletas",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Que no maneje y que se vuelva a casa en taxi.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Prohibido el paso a bicicletas",
+      "Ciclovía obligatoria",
+      "Zona escolar",
+      "Estacionamiento exclusivo para ciclistas"
     ]
   },
   {
-    "pregunta": ".¿Cuándo es más probable que usted pierda concentración cuando conduce? \\nR Cuando va escuchando música a alto volumen. \\nCuando utiliza un teléfono celular. \\nCuando mira un mapa del camino. \\n176- .Usted pretende doblar hacia la izquierda en un cruce, pero hay vehículos estacionados que le obstruyen la visual. ¿Qué  debería hacer usted",
-    "correcta": "Detenerse, luego avanzar lentamente hasta que tenga una visual plena.",
+    "pregunta": "¿Qué se debe hacer si se queda sin frenos en bajada?",
+    "correcta": "Bajar cambios, usar freno de motor y freno de mano gradualmente",
     "opciones": [
-      "Detenerse, luego avanzar lentamente hasta que tenga una visual plena.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Bajar cambios, usar freno de motor y freno de mano gradualmente",
+      "Apagar el motor",
+      "Tocar el claxon repetidamente",
+      "Tirarse al canal contrario"
     ]
   },
   {
-    "pregunta": "¿En qué situación retrocede usted con su vehículo en un cruce",
-    "correcta": "Sólo si recibe indicación expresa de un tránsito.",
+    "pregunta": "¿Qué indican luces intermitentes encendidas en un vehículo estacionado?",
+    "correcta": "Advertencia de situación de emergencia",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Sólo si recibe indicación expresa de un tránsito.",
-      "Aumentar la velocidad para no causar congestión."
+      "Advertencia de situación de emergencia",
+      "Está esperando a alguien",
+      "Está bien estacionado",
+      "Se encuentra libre de problemas"
     ]
   },
   {
-    "pregunta": ".¿En qué circunstancia usted se detendría justo sobre un cruce cebra existente a mitad de cuadra",
-    "correcta": "Cuando ello sea necesario para evitar un accidente.",
+    "pregunta": "¿Qué se debe hacer si se pincha una llanta en movimiento?",
+    "correcta": "Sujetar el volante con firmeza, desacelerar y detenerse con cuidado",
     "opciones": [
-      "Cuando ello sea necesario para evitar un accidente.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Sujetar el volante con firmeza, desacelerar y detenerse con cuidado",
+      "Frenar bruscamente",
+      "Girar rápidamente hacia la acera",
+      "Continuar hasta una gasolinera"
     ]
   },
   {
-    "pregunta": ".- Un espacio entre usted y el vehículo que marcha delante igual a lo que usted recorre en tres segundos es suficiente  cuando:  las condiciones climáticas son buenas. \\n180-.- Usted se detiene ante un cruce cebra. En la vereda hay peatones esperando, pero ellos no comienzan a cruzar. ¿Qué  hace usted",
-    "correcta": "Tener paciencia y esperar.",
+    "pregunta": "¿Cuál es la velocidad máxima en una carretera fuera del área urbana?",
+    "correcta": "80 km/h",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Tener paciencia y esperar."
+      "80 km/h",
+      "60 km/h",
+      "50 km/h",
+      "100 km/h"
     ]
   },
   {
-    "pregunta": "- Cuando conduce en la ciudad ¿por qué razón debería usted tener cuidado al cruzarse con un bus que se encuentra  detenido en una parada",
-    "correcta": "Porque pueden aparecer peatones detrás del bus.",
+    "pregunta": "¿Qué indica una señal con dos flechas opuestas?",
+    "correcta": "Vía de doble sentido",
     "opciones": [
-      "Porque pueden aparecer peatones detrás del bus.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Vía de doble sentido",
+      "Prohibido adelantar",
+      "Entrada restringida",
+      "Única dirección"
     ]
   },
   {
-    "pregunta": "- Usted va conduciendo por un camino de doble tránsito cuando se encuentra con personas que van a caballo delante de  él. ¿Qué es lo primero que usted debería hacer",
-    "correcta": "Prepararse para reducir la velocidad.",
+    "pregunta": "¿Qué debe hacer si un peatón está cruzando la calle en un lugar no permitido?",
+    "correcta": "Disminuir la velocidad y evitar el atropello",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Prepararse para reducir la velocidad.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Disminuir la velocidad y evitar el atropello",
+      "Tocar la bocina con fuerza",
+      "Acelerar para que se apure",
+      "Continuar sin hacer nada"
     ]
   },
   {
-    "pregunta": "- ¿Cómo debería usted adelantar a personas que van a caballo",
-    "correcta": "Conduciendo lentamente y dejando bastante espacio  lateral.",
+    "pregunta": "¿Qué significa una línea blanca continua al borde de la vía?",
+    "correcta": "Límite del carril o del hombro",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Conduciendo lentamente y dejando bastante espacio  lateral."
+      "Límite del carril o del hombro",
+      "Prohibido adelantar",
+      "Zona peatonal",
+      "Zona de carga"
     ]
   },
   {
-    "pregunta": ".- Usted va circulando a 65 km/h aproximadamente cuando, lamentablemente, atropella a un peatón. A esa velocidad,.   es muy probable que el peatón muera. \\n185- Usted va siguiendo a un automóvil que es conducido por una persona de edad. Usted debería...  estar consciente de que las reacciones del conductor pueden no ser tan rápidas como las suyas.\\n186-. Al estacionar su vehículo en un lugar en el que no hay señales que lo permitan ni que lo prohíban, usted no debe  Obstaculizar el tránsito a otros usuarios de la vía. \\n187.- Usted nunca debería intentar adelantar a un ciclista  justo antes de doblar a la derecha. \\n188.- ¿Cuál o cuáles de las siguientes afirmaciones son correctas en cuanto a la conducción durante la noche",
-    "correcta": "Nuestra limitada capacidad para ver de noche aumenta los riesgos de accidentes. \\nNuestra capacidad de apreciar distancias en la noche se ve disminuida. El color de las ropas de un peatón influye en que éste  pueda ser más o menos visible para los conductores.",
+    "pregunta": "¿Qué debe hacer en una intersección con semáforo intermitente en amarillo?",
+    "correcta": "Continuar con precaución",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Nuestra limitada capacidad para ver de noche aumenta los riesgos de accidentes. \\nNuestra capacidad de apreciar distancias en la noche se ve disminuida. El color de las ropas de un peatón influye en que éste  pueda ser más o menos visible para los conductores.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Continuar con precaución",
+      "Detenerse totalmente",
+      "Acelerar para pasar rápido",
+      "Cambiar de carril"
     ]
   },
   {
-    "pregunta": "- ¿Cuál o cuáles de las siguientes afirmaciones es(son) correcta(s) en cuanto a la conducción bajo la lluvia",
-    "correcta": "Independientemente del estado de los neumáticos, el riesgo de que éstos patinen es mayor mientras mayor es la velocidad. 190- Viajando de noche usted es encandilado por las luces de un vehículo que viene en sentido contrario, ¿qué debería hacer  usted?  Bajar la velocidad y eventualmente detenerse.",
+    "pregunta": "¿Qué tipo de luces deben usarse en condiciones de neblina?",
+    "correcta": "Luces bajas",
     "opciones": [
-      "Independientemente del estado de los neumáticos, el riesgo de que éstos patinen es mayor mientras mayor es la velocidad. 190- Viajando de noche usted es encandilado por las luces de un vehículo que viene en sentido contrario, ¿qué debería hacer  usted?  Bajar la velocidad y eventualmente detenerse.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Luces bajas",
+      "Luces altas",
+      "Luces intermitentes",
+      "Luces de parqueo"
     ]
   },
   {
-    "pregunta": "- Usted acaba de conducir a través de una calle inundada. ¿Qué es lo primero que debería hacer",
-    "correcta": "Chequear sus frenos.",
+    "pregunta": "¿Qué documento certifica la propiedad legal del vehículo?",
+    "correcta": "Título de propiedad",
     "opciones": [
-      "Una alternativa plausible pero incorrecta.",
-      "Chequear sus frenos.",
-      "Otra opción que parece válida pero no lo es.",
-      "Una respuesta similar en forma, no en fondo."
+      "Título de propiedad",
+      "Licencia de conducir",
+      "Carné de circulación",
+      "Seguro obligatorio"
     ]
   },
   {
-    "pregunta": ".- En una ocasión de mucha neblina usted va detrás de otros vehículos y lleva encendidas sus luces bajas. ¿De qué otra  forma puede reducir las probabilidades de verse involucrado en un accidente",
-    "correcta": "Circulando a baja velocidad y aumentando la distancia al vehículo que va adelante.",
+    "pregunta": "¿Qué significa una señal con un niño corriendo?",
+    "correcta": "Zona escolar",
     "opciones": [
-      "Circulando a baja velocidad y aumentando la distancia al vehículo que va adelante.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Zona escolar",
+      "Prohibido correr",
+      "Estacionamiento infantil",
+      "Paradero de buses"
     ]
   },
   {
-    "pregunta": ". Hay mucha neblina y el auto que viene detrás suyo parece estar muy cerca. ¿Qué debería hacer usted",
-    "correcta": "Continuar con mucho cuidado.",
+    "pregunta": "¿Qué debe hacer al escuchar una sirena de ambulancia detrás suyo?",
+    "correcta": "Ceder el paso deteniéndose o moviéndose al lado",
     "opciones": [
-      "Continuar con mucho cuidado.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Ceder el paso deteniéndose o moviéndose al lado",
+      "Aumentar la velocidad",
+      "Detenerse abruptamente en medio del carril",
+      "Encender luces altas"
     ]
   },
   {
-    "pregunta": "- Su vehículo ha quedado dañado o parado en medio de una autopista. ¿Qué es lo primero que usted debería hacer",
-    "correcta": "Encender sus luces de advertencia de peligro.",
+    "pregunta": "¿Cuál es el límite legal de velocidad en una autopista?",
+    "correcta": "100 km/h",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Encender sus luces de advertencia de peligro.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "100 km/h",
+      "80 km/h",
+      "70 km/h",
+      "120 km/h"
     ]
   },
   {
-    "pregunta": ".- Mientras va conduciendo su vehículo usted siente que lo están llamando a su teléfono celular, ¿qué hace usted para  responder la llamada",
-    "correcta": "Espera hasta encontrar un lugar seguro donde detenerse.",
+    "pregunta": "¿Qué indica una señal triangular con un dibujo de niños cruzando?",
+    "correcta": "Precaución, cruce escolar",
     "opciones": [
-      "Espera hasta encontrar un lugar seguro donde detenerse.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Precaución, cruce escolar",
+      "Entrada al parque",
+      "Solo peatones",
+      "Prohibido detenerse"
     ]
   },
   {
-    "pregunta": "- En relación con el transporte de una carga sobre la parrilla de un automóvil, ¿cuál de las siguientes afirmaciones  constituye una obligación para el conductor",
-    "correcta": "Debe estar muy bien sujeta, y tener la de menor peso.",
+    "pregunta": "¿Qué indica una señal circular con un fondo blanco y una flecha negra?",
+    "correcta": "Dirección obligatoria",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Debe estar muy bien sujeta, y tener la de menor peso.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Dirección obligatoria",
+      "Curva peligrosa",
+      "Entrada prohibida",
+      "Estacionamiento"
     ]
   },
   {
-    "pregunta": ".- En una carretera de doble calzada y de mucho tránsito, usted está siendo seguido muy de cerca por un vehículo que  viene atrás. ¿Qué hace usted para disminuir el riesgo de accidente",
-    "correcta": "Aumenta su distancia al vehículo que va adelante.",
+    "pregunta": "¿Cuál es la acción correcta al pasar cerca de ciclistas en carretera?",
+    "correcta": "Dejar una distancia mínima de 1.5 metros",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumenta su distancia al vehículo que va adelante.",
-      "Aumentar la velocidad para no causar congestión."
+      "Dejar una distancia mínima de 1.5 metros",
+      "Pasar rápidamente",
+      "Tocar la bocina para advertirles",
+      "Adelantar sin cambiar de carril"
     ]
   },
   {
-    "pregunta": ".- Usted va circulando por una carretera de doble calzada con tres pistas por sentido. Las demarcaciones de pistas y de eje  central están reforzadas con tachas reflectantes. Si a su izquierda las tachas son rojas y a su derecha éstas son blancas, ¿por  cuál pista va usted",
-    "correcta": "Por la pista de la izquierda.",
+    "pregunta": "¿Qué vehículo tiene prioridad en un cruce con semáforo dañado?",
+    "correcta": "El que viene por la derecha",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Por la pista de la izquierda."
+      "El que viene por la derecha",
+      "El más grande",
+      "El que venga más rápido",
+      "El que toca la bocina"
     ]
   },
   {
-    "pregunta": "- ¿Cuándo no debería usted detenerse al ponerse el semáforo en amarillo",
-    "correcta": "Cuando ya ha ingresado al cruce.  Cuando está tan cerca del cruce que su detención puede ocasionar un accidente. \\nPREGUNTAS ANALÍTICAS",
+    "pregunta": "¿Qué debe hacer antes de arrancar el vehículo?",
+    "correcta": "Verificar espejos, cinturón y entorno",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Cuando ya ha ingresado al cruce.  Cuando está tan cerca del cruce que su detención puede ocasionar un accidente. \\nPREGUNTAS ANALÍTICAS"
+      "Verificar espejos, cinturón y entorno",
+      "Tocar la bocina",
+      "Encender las luces altas",
+      "Acelerar dos veces"
     ]
   },
   {
-    "pregunta": "¿Qué debe hacer el conductor si su vehículo se le daña sobre la vía del tren",
-    "correcta": "Abandonar el vehículo.",
+    "pregunta": "¿Qué documento demuestra que el vehículo ha pasado la revisión técnica?",
+    "correcta": "Certificado de inspección",
     "opciones": [
-      "Una respuesta similar en forma, no en fondo.",
-      "Otra opción que parece válida pero no lo es.",
-      "Abandonar el vehículo.",
-      "Una alternativa plausible pero incorrecta."
+      "Certificado de inspección",
+      "Licencia de conducir",
+      "Tarjeta de propiedad",
+      "Seguro obligatorio",
+      "Preguntas corregidas 81–100"
     ]
   },
   {
-    "pregunta": "¿A qué vehículo se le presta más atención",
-    "correcta": "Al vehículo de adelante.",
+    "pregunta": "¿Qué debe hacer si sufre un accidente leve sin heridos?",
+    "correcta": "Mover el vehículo si es seguro y reportar el hecho",
     "opciones": [
-      "Al vehículo de adelante.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Mover el vehículo si es seguro y reportar el hecho",
+      "Esperar dentro del vehículo sin moverlo",
+      "Tocar la bocina para llamar atención",
+      "Abandonar la escena"
     ]
   },
   {
-    "pregunta": "¿Qué líquido produce desperfectos mecánicos del vehículo",
-    "correcta": "Falta de agua en la batería.",
+    "pregunta": "¿Qué significa una señal con la letra “H”?",
+    "correcta": "Hospital cercano",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Falta de agua en la batería.",
-      "Aumentar la velocidad para no causar congestión."
+      "Hospital cercano",
+      "Hotel en ruta",
+      "Helipuerto",
+      "Hidrante"
     ]
   },
   {
-    "pregunta": "¿Qué líquido produce explosión en el vehículo",
-    "correcta": "Agua en el radiador.",
+    "pregunta": "¿Qué indica una señal en forma de X con luces rojas intermitentes?",
+    "correcta": "Cruce ferroviario",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Agua en el radiador.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Cruce ferroviario",
+      "Intersección múltiple",
+      "Cruce de peatones",
+      "Calle cerrada"
     ]
   },
   {
-    "pregunta": "¿Cuándo hay menos posibilidades de que un vehículo explote",
-    "correcta": "Cuando tiene el tanque lleno.",
+    "pregunta": "¿Qué significa una señal circular con un camión tachado?",
+    "correcta": "Prohibido el paso de vehículos pesados",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Cuando tiene el tanque lleno.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Prohibido el paso de vehículos pesados",
+      "Área exclusiva para carga",
+      "Ruta obligatoria para camiones",
+      "Solo camiones"
     ]
   },
   {
-    "pregunta": "¿Cómo debe ir la carga de un vehículo de carga",
-    "correcta": "Bien cubierta.",
+    "pregunta": "¿Qué debe hacer al entrar a una vía desde una calle secundaria?",
+    "correcta": "Ceder el paso a los vehículos que ya circulan",
     "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Una alternativa plausible pero incorrecta.",
-      "Bien cubierta.",
-      "Una respuesta similar en forma, no en fondo."
+      "Ceder el paso a los vehículos que ya circulan",
+      "Detenerse y luego acelerar rápidamente",
+      "Continuar sin mirar",
+      "Usar luces altas"
     ]
   },
   {
-    "pregunta": "¿Cómo se mide la presión de aire de las llantas",
-    "correcta": "En frío.",
+    "pregunta": "¿Qué indica una señal con una curva hacia la izquierda?",
+    "correcta": "Curva pronunciada a la izquierda",
     "opciones": [
-      "Una alternativa plausible pero incorrecta.",
-      "Otra opción que parece válida pero no lo es.",
-      "En frío.",
-      "Una respuesta similar en forma, no en fondo."
+      "Curva pronunciada a la izquierda",
+      "Cambio de sentido",
+      "Rotonda",
+      "Salida próxima"
     ]
   },
   {
-    "pregunta": "¿Para evitar un accidente que debe hacer el conductor",
-    "correcta": "Tener unos buenos frenos.",
+    "pregunta": "¿Qué significa una señal de tránsito con una pendiente descendente?",
+    "correcta": "Bajada peligrosa",
     "opciones": [
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Tener unos buenos frenos.",
-      "Aumentar la velocidad para no causar congestión."
+      "Bajada peligrosa",
+      "Subida prolongada",
+      "Túnel próximo",
+      "Fin de autopista"
     ]
   },
   {
-    "pregunta": "¿Qué luces se utilizan cuando hay neblina",
-    "correcta": "Luces altas.",
+    "pregunta": "¿Qué elemento es obligatorio llevar en caso de emergencia?",
+    "correcta": "Triángulo reflectivo",
     "opciones": [
-      "Luces de emergencia traseras.",
-      "Luces altas.",
-      "Luces interiores del tablero.",
-      "Luces decorativas."
+      "Triángulo reflectivo",
+      "Almohadas",
+      "Soga",
+      "Mantas"
     ]
   },
   {
-    "pregunta": "¿Qué debe hacer el conductor si está sobre la vía con luz amarilla",
-    "correcta": "Debe continuar la marcha con precaución.",
+    "pregunta": "¿Cuál es el comportamiento correcto en un embotellamiento?",
+    "correcta": "Mantener la calma y avanzar progresivamente",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Debe continuar la marcha con precaución.",
-      "Ignorar la situación si no representa un peligro inmediato."
+      "Mantener la calma y avanzar progresivamente",
+      "Cambiar de carril constantemente",
+      "Usar la bocina sin parar",
+      "Acelerar y frenar repetidamente"
     ]
   },
   {
-    "pregunta": "¿Qué debe hacer el conductor después de que el vehículo pasa un charco de agua",
-    "correcta": "Continúa a la marcha despacio.",
+    "pregunta": "¿Qué se debe revisar con mayor frecuencia en un vehículo?",
+    "correcta": "Frenos, neumáticos, luces y aceite",
     "opciones": [
-      "Continúa a la marcha despacio.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Frenos, neumáticos, luces y aceite",
+      "Color del vehículo",
+      "Alfombras",
+      "Nivel de gasolina solamente"
     ]
   },
   {
-    "pregunta": "¿Qué debe hacer el conductor ante un cruce de cebra",
-    "correcta": "Reduce velocidad y hasta parar el vehículo.",
+    "pregunta": "¿Qué significa una señal de “No entrar”?",
+    "correcta": "Prohibido el acceso en esa dirección",
     "opciones": [
-      "Aumentar la velocidad para no causar congestión.",
-      "Reduce velocidad y hasta parar el vehículo.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Accionar el claxon para alertar y continuar avanzando."
+      "Prohibido el acceso en esa dirección",
+      "Entrada exclusiva para residentes",
+      "Estacionamiento reservado",
+      "Solo motos"
     ]
   },
   {
-    "pregunta": "¿Si su vehículo se tira hacia un lado es producto de qué",
-    "correcta": "Falta de alineamiento.",
+    "pregunta": "¿Qué se entiende por distancia de frenado?",
+    "correcta": "Distancia que recorre el vehículo desde que se frena hasta que se detiene",
     "opciones": [
-      "Otra opción que parece válida pero no lo es.",
-      "Falta de alineamiento.",
-      "Una alternativa plausible pero incorrecta.",
-      "Una respuesta similar en forma, no en fondo."
+      "Distancia que recorre el vehículo desde que se frena hasta que se detiene",
+      "Tiempo que se tarda en acelerar",
+      "Longitud de la vía",
+      "Espacio entre carriles"
     ]
   },
   {
-    "pregunta": "¿Qué debe hacer un conductor si un caballo esta sobre la vía",
-    "correcta": "Rebasa por el carril derecho ó la línea blanca.",
+    "pregunta": "¿Cuál es la función de los espejos retrovisores?",
+    "correcta": "Facilitar la visibilidad de lo que ocurre detrás del vehículo",
     "opciones": [
-      "Verdes",
-      "Rebasa por el carril derecho ó la línea blanca.",
-      "Rojas",
-      "Amarillas"
+      "Facilitar la visibilidad de lo que ocurre detrás del vehículo",
+      "Estética del vehículo",
+      "Proteger del sol",
+      "Mostrar el tablero"
     ]
   },
   {
-    "pregunta": "¿Ante una situación de peligro a quien prefiere matar, a un animal, a un peatón ó al conductor",
-    "correcta": "El conductor",
+    "pregunta": "¿Qué se considera conducción defensiva?",
+    "correcta": "Prever riesgos y actuar con precaución constante",
     "opciones": [
-      "Hacer sonar la bocina para que se aparte.",
-      "Avanzar rápidamente para evitar detenerse.",
-      "Ignorarlo si está lejos.",
-      "El conductor"
+      "Prever riesgos y actuar con precaución constante",
+      "Manejar despacio sin importar el lugar",
+      "Usar luces altas en todo momento",
+      "No permitir que nadie lo adelante"
     ]
   },
   {
-    "pregunta": "¿Si una persona anciana va sobre la vía muy despacio; que debe hacer el conductor",
-    "correcta": "Lo rebasa con cuidado. \\nCuando se utilizan las luces de advertencias \\n Para echar marcha atrás cuando no hay vehículos",
+    "pregunta": "¿Qué tipo de luces deben usarse al estacionarse en la noche?",
+    "correcta": "Luces de estacionamiento",
     "opciones": [
-      "Accionar el claxon para alertar y continuar avanzando.",
-      "Aumentar la velocidad para no causar congestión.",
-      "Ignorar la situación si no representa un peligro inmediato.",
-      "Lo rebasa con cuidado. \\nCuando se utilizan las luces de advertencias \\n Para echar marcha atrás cuando no hay vehículos"
+      "Luces de estacionamiento",
+      "Luces altas",
+      "Intermitentes",
+      "Luces de reversa"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal con una persona empujando una carretilla?",
+    "correcta": "Zona de trabajadores o construcción",
+    "opciones": [
+      "Zona de trabajadores o construcción",
+      "Parque",
+      "Zona peatonal",
+      "Tienda"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción está prohibida mientras se conduce?",
+    "correcta": "Usar el teléfono sin manos libres",
+    "opciones": [
+      "Usar el teléfono sin manos libres",
+      "Comer chicle",
+      "Encender la radio",
+      "Usar cinturón"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con curvas consecutivas?",
+    "correcta": "Camino sinuoso adelante",
+    "opciones": [
+      "Camino sinuoso adelante",
+      "Recta larga",
+      "Túnel",
+      "Calle cerrada"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si se va a conducir durante largas horas?",
+    "correcta": "Hacer pausas regulares para descansar",
+    "opciones": [
+      "Hacer pausas regulares para descansar",
+      "No detenerse para llegar más rápido",
+      "Conducir sin distracciones como música",
+      "Bajar la velocidad a la mitad"
+    ]
+  },
+  {
+    "pregunta": "¿Qué hacer al detenerse en una pendiente cuesta arriba?",
+    "correcta": "Usar el freno de mano y mantener distancia",
+    "opciones": [
+      "Usar el freno de mano y mantener distancia",
+      "Apagar el motor",
+      "Acelerar constantemente",
+      "Colocar piedras bajo las ruedas",
+      "Preguntas corregidas 101–122"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se recomienda hacer al conducir bajo lluvia intensa?",
+    "correcta": "Reducir la velocidad y aumentar la distancia con otros vehículos",
+    "opciones": [
+      "Reducir la velocidad y aumentar la distancia con otros vehículos",
+      "Encender luces altas y acelerar",
+      "Frenar bruscamente",
+      "Circular por el carril central"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal triangular con un venado?",
+    "correcta": "Paso de animales silvestres",
+    "opciones": [
+      "Paso de animales silvestres",
+      "Parque infantil",
+      "Zoológico",
+      "Zona de caza"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si otro conductor comete una infracción?",
+    "correcta": "Mantener la calma y evitar conflictos",
+    "opciones": [
+      "Mantener la calma y evitar conflictos",
+      "Gritarle y seguirlo",
+      "Tocar la bocina sin parar",
+      "Cerrar el paso"
+    ]
+  },
+  {
+    "pregunta": "¿Qué es una rotonda?",
+    "correcta": "Intersección circular donde el que circula tiene la prioridad",
+    "opciones": [
+      "Intersección circular donde el que circula tiene la prioridad",
+      "Zona peatonal",
+      "Cruce ferroviario",
+      "Glorieta para peatones"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si pierde el control del vehículo?",
+    "correcta": "Soltar el acelerador, sujetar el volante y no frenar bruscamente",
+    "opciones": [
+      "Soltar el acelerador, sujetar el volante y no frenar bruscamente",
+      "Girar el volante rápidamente",
+      "Frenar de golpe",
+      "Apagar el motor"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal de “Altura máxima”?",
+    "correcta": "Límite de altura permitido para vehículos",
+    "opciones": [
+      "Límite de altura permitido para vehículos",
+      "Altura de túnel",
+      "Entrada para aviones",
+      "Obstáculo bajo"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si un neumático explota en movimiento?",
+    "correcta": "Sujetar el volante, desacelerar gradualmente y detenerse",
+    "opciones": [
+      "Sujetar el volante, desacelerar gradualmente y detenerse",
+      "Girar rápidamente",
+      "Acelerar más",
+      "Frenar de golpe"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con un automóvil y líneas curvas detrás?",
+    "correcta": "Pavimento resbaloso",
+    "opciones": [
+      "Pavimento resbaloso",
+      "Curva peligrosa",
+      "Frenado obligatorio",
+      "Túnel próximo"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la función de los cinturones de seguridad?",
+    "correcta": "Proteger a los ocupantes en caso de colisión",
+    "opciones": [
+      "Proteger a los ocupantes en caso de colisión",
+      "Mejorar la postura",
+      "Evitar multas",
+      "Controlar el asiento"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción es ilegal mientras se conduce?",
+    "correcta": "Usar el teléfono sin dispositivo manos libres",
+    "opciones": [
+      "Usar el teléfono sin dispositivo manos libres",
+      "Ajustar el aire acondicionado",
+      "Cambiar de emisora",
+      "Tomar agua"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe revisar antes de salir de viaje por carretera?",
+    "correcta": "Estado de frenos, luces, llantas, aceite y combustible",
+    "opciones": [
+      "Estado de frenos, luces, llantas, aceite y combustible",
+      "Solo el color del vehículo",
+      "Si tiene bebidas en el auto",
+      "La música y el GPS"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal con una flecha que da vuelta en U tachada?",
+    "correcta": "Prohibido girar en U",
+    "opciones": [
+      "Prohibido girar en U",
+      "Obligatorio girar en U",
+      "Retorno autorizado",
+      "Cruce complicado"
+    ]
+  },
+  {
+    "pregunta": "¿Qué vehículo tiene prioridad en un puente angosto sin señalización?",
+    "correcta": "El que haya entrado primero al puente",
+    "opciones": [
+      "El que haya entrado primero al puente",
+      "El más grande",
+      "El que va más rápido",
+      "El que viene por la derecha"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si un niño corre a cruzar la calle?",
+    "correcta": "Detenerse inmediatamente",
+    "opciones": [
+      "Detenerse inmediatamente",
+      "Tocar la bocina y continuar",
+      "Acelerar para evitar frenar",
+      "Gritar por la ventana"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la forma correcta de señalizar una intención de girar?",
+    "correcta": "Usar las luces direccionales con anticipación",
+    "opciones": [
+      "Usar las luces direccionales con anticipación",
+      "Bajar la ventana y señalar con la mano",
+      "Encender las luces altas",
+      "Tocar la bocina"
+    ]
+  },
+  {
+    "pregunta": "¿Qué documento contiene los datos de matrícula del vehículo?",
+    "correcta": "Registro vehicular",
+    "opciones": [
+      "Registro vehicular",
+      "Licencia de conducir",
+      "Tarjeta de propiedad",
+      "Carné de inspección"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal circular con un número dentro?",
+    "correcta": "Límite de velocidad en km/h",
+    "opciones": [
+      "Límite de velocidad en km/h",
+      "Altura máxima",
+      "Número de peaje",
+      "Distancia mínima"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la forma correcta de adelantar en carretera?",
+    "correcta": "Asegurarse de que no haya vehículos de frente y señalizar",
+    "opciones": [
+      "Asegurarse de que no haya vehículos de frente y señalizar",
+      "Hacerlo rápido sin mirar",
+      "Por el carril derecho",
+      "Tocar la bocina y pasar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se considera manejo agresivo?",
+    "correcta": "Cambios bruscos de carril, velocidad excesiva y bocina constante",
+    "opciones": [
+      "Cambios bruscos de carril, velocidad excesiva y bocina constante",
+      "Conducir atento",
+      "Frenar con suavidad",
+      "Estacionar en reversa"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer en una calle sin señalización de preferencia?",
+    "correcta": "Ceder el paso al vehículo de la derecha",
+    "opciones": [
+      "Ceder el paso al vehículo de la derecha",
+      "Acelerar",
+      "Tocar la bocina",
+      "Esperar a que otro se mueva"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se entiende por “vehículo de emergencia”?",
+    "correcta": "Aquellos que prestan servicios como ambulancias, policías y bomberos",
+    "opciones": [
+      "Aquellos que prestan servicios como ambulancias, policías y bomberos",
+      "Vehículos viejos",
+      "Autos sin revisión técnica",
+      "Motos particulares"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el uso correcto de la bocina?",
+    "correcta": "Advertir peligros o prevenir accidentes",
+    "opciones": [
+      "Advertir peligros o prevenir accidentes",
+      "Expresar enojo",
+      "Saludar a conocidos",
+      "Acelerar el paso de otros",
+      "Preguntas corregidas 123–140"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se considera una infracción leve de tránsito?",
+    "correcta": "No usar direccionales al cambiar de carril",
+    "opciones": [
+      "No usar direccionales al cambiar de carril",
+      "Conducir en estado de embriaguez",
+      "No respetar una señal de “Pare”",
+      "Exceso de velocidad en zona escolar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con una flecha curvada hacia la derecha con una línea prohibitiva?",
+    "correcta": "Prohibido girar a la derecha",
+    "opciones": [
+      "Prohibido girar a la derecha",
+      "Curva obligatoria",
+      "Giro permitido",
+      "Ceder el paso"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la principal causa de accidentes de tránsito?",
+    "correcta": "Imprudencia del conductor",
+    "opciones": [
+      "Imprudencia del conductor",
+      "Condiciones climáticas",
+      "Daños en la vía",
+      "Exceso de señalización"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si otro vehículo lo rebasa en carretera?",
+    "correcta": "Mantener su carril y velocidad",
+    "opciones": [
+      "Mantener su carril y velocidad",
+      "Acelerar para no dejarlo pasar",
+      "Girar hacia el otro carril",
+      "Encender las luces altas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal circular con un número seguido de “t”?",
+    "correcta": "Límite de peso del vehículo en toneladas",
+    "opciones": [
+      "Límite de peso del vehículo en toneladas",
+      "Tiempo estimado de cruce",
+      "Altura del puente",
+      "Número de ejes permitidos"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la forma correcta de actuar en un cruce de ferrocarril sin barrera y sin señal luminosa?",
+    "correcta": "Detenerse, mirar y escuchar antes de cruzar",
+    "opciones": [
+      "Detenerse, mirar y escuchar antes de cruzar",
+      "Tocar la bocina y avanzar",
+      "Pasar rápido sin detenerse",
+      "Esperar que otro vehículo pase primero"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si ve una señal de “No estacionar”?",
+    "correcta": "Buscar otro lugar permitido para estacionar",
+    "opciones": [
+      "Buscar otro lugar permitido para estacionar",
+      "Estacionar por pocos minutos",
+      "Dejar el auto con luces intermitentes",
+      "Estacionar sobre la acera"
+    ]
+  },
+  {
+    "pregunta": "¿Qué es el aquaplaning?",
+    "correcta": "Pérdida de contacto entre las llantas y el pavimento por agua acumulada",
+    "opciones": [
+      "Pérdida de contacto entre las llantas y el pavimento por agua acumulada",
+      "Técnica de frenado controlado",
+      "Sistema de ahorro de combustible",
+      "Aire que entra al motor"
+    ]
+  },
+  {
+    "pregunta": "¿Qué distancia mínima se debe mantener con el vehículo de adelante?",
+    "correcta": "Lo suficiente para frenar con seguridad, al menos 3 segundos",
+    "opciones": [
+      "Lo suficiente para frenar con seguridad, al menos 3 segundos",
+      "Un metro",
+      "Un carro de distancia",
+      "No es necesario si se va lento"
+    ]
+  },
+  {
+    "pregunta": "¿Qué elemento reduce las consecuencias de un impacto en el vehículo?",
+    "correcta": "Bolsa de aire (airbag)",
+    "opciones": [
+      "Bolsa de aire (airbag)",
+      "Bocina",
+      "Luces intermitentes",
+      "Tapete antideslizante"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si un semáforo está en verde, pero un peatón aún está cruzando?",
+    "correcta": "Esperar a que el peatón termine de cruzar",
+    "opciones": [
+      "Esperar a que el peatón termine de cruzar",
+      "Tocar la bocina",
+      "Continuar lentamente",
+      "Cambiar de carril"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal triangular con una cruz dentro?",
+    "correcta": "Intersección peligrosa",
+    "opciones": [
+      "Intersección peligrosa",
+      "Zona de hospitales",
+      "Estación policial",
+      "Cruce ferroviario"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer al ingresar a una autopista?",
+    "correcta": "Acelerar para integrarse al flujo sin interferir",
+    "opciones": [
+      "Acelerar para integrarse al flujo sin interferir",
+      "Detenerse y esperar",
+      "Girar en U si hay tráfico",
+      "Encender luces intermitentes"
+    ]
+  },
+  {
+    "pregunta": "¿Qué elemento se usa para indicar giros o cambios de carril?",
+    "correcta": "Luces direccionales",
+    "opciones": [
+      "Luces direccionales",
+      "Luces de parqueo",
+      "Bocina",
+      "Espejos laterales"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe evitar al conducir de noche?",
+    "correcta": "Mirar directamente las luces de vehículos que vienen de frente",
+    "opciones": [
+      "Mirar directamente las luces de vehículos que vienen de frente",
+      "Usar luces bajas",
+      "Tener la radio encendida",
+      "Seguir las señales"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si un animal se cruza inesperadamente en la vía?",
+    "correcta": "Reducir la velocidad y evitar movimientos bruscos",
+    "opciones": [
+      "Reducir la velocidad y evitar movimientos bruscos",
+      "Tocar la bocina",
+      "Acelerar para evitarlo",
+      "Cambiar de carril de inmediato"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se considera una conducta responsable al volante?",
+    "correcta": "Respetar señales y a otros usuarios de la vía",
+    "opciones": [
+      "Respetar señales y a otros usuarios de la vía",
+      "Usar el celular en tráfico lento",
+      "Rebasar por la derecha",
+      "Manejar sin cinturón en zonas cortas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal amarilla con forma de rombo y una bicicleta?",
+    "correcta": "Advertencia de ciclistas en la vía",
+    "opciones": [
+      "Advertencia de ciclistas en la vía",
+      "Zona exclusiva para bicicletas",
+      "Prohibido el paso a bicicletas",
+      "Estacionamiento para ciclistas",
+      "Preguntas corregidas 141–160"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción debe evitarse completamente al conducir en curvas cerradas?",
+    "correcta": "Frenar bruscamente dentro de la curva",
+    "opciones": [
+      "Frenar bruscamente dentro de la curva",
+      "Reducir velocidad antes de entrar",
+      "Mantenerse en el carril",
+      "Usar ambas manos en el volante"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal con un semáforo dibujado?",
+    "correcta": "Advertencia de semáforo próximo",
+    "opciones": [
+      "Advertencia de semáforo próximo",
+      "Zona de parada obligatoria",
+      "Fin de zona regulada",
+      "Semáforo fuera de servicio"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si un agente de tránsito le hace señas para detenerse?",
+    "correcta": "Detenerse de inmediato donde sea seguro",
+    "opciones": [
+      "Detenerse de inmediato donde sea seguro",
+      "Continuar si tiene verde",
+      "Esperar a que otro vehículo se detenga",
+      "Ignorarlo si está en apuro"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una línea doble continua en el centro de la vía?",
+    "correcta": "Prohibido adelantar en ambos sentidos",
+    "opciones": [
+      "Prohibido adelantar en ambos sentidos",
+      "Permiso para estacionar",
+      "Cambio de carril obligatorio",
+      "Vía exclusiva"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el uso correcto del espejo retrovisor central?",
+    "correcta": "Observar la vía detrás del vehículo",
+    "opciones": [
+      "Observar la vía detrás del vehículo",
+      "Ver si hay pasajeros",
+      "Revisar el maquillaje",
+      "Controlar la temperatura del auto"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal de “Zona de derrumbes”?",
+    "correcta": "Posibilidad de caída de rocas u objetos desde los lados",
+    "opciones": [
+      "Posibilidad de caída de rocas u objetos desde los lados",
+      "Calle en reparación",
+      "Zona escolar",
+      "Inundación"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción debe tomar al entrar en una curva con pavimento mojado?",
+    "correcta": "Reducir la velocidad antes de entrar",
+    "opciones": [
+      "Reducir la velocidad antes de entrar",
+      "Acelerar en la curva",
+      "Girar bruscamente",
+      "Tocar la bocina"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la consecuencia de manejar con neumáticos desgastados?",
+    "correcta": "Menor adherencia al pavimento y mayor riesgo de accidente",
+    "opciones": [
+      "Menor adherencia al pavimento y mayor riesgo de accidente",
+      "Ahorro de combustible",
+      "Mejor agarre en curvas",
+      "Conducción más suave"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si sufre microsueños conduciendo?",
+    "correcta": "Detenerse y descansar",
+    "opciones": [
+      "Detenerse y descansar",
+      "Abrir la ventana",
+      "Encender la radio",
+      "Acelerar para mantenerse despierto"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal de tránsito en forma de octágono rojo?",
+    "correcta": "Alto / Pare",
+    "opciones": [
+      "Alto / Pare",
+      "Precaución",
+      "Ceda el paso",
+      "Cruce de peatones"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si el volante se pone duro de repente?",
+    "correcta": "Reducir la velocidad y buscar lugar seguro para detenerse",
+    "opciones": [
+      "Reducir la velocidad y buscar lugar seguro para detenerse",
+      "Girar más fuerte",
+      "Acelerar para aflojarlo",
+      "Continuar hasta el destino"
+    ]
+  },
+  {
+    "pregunta": "¿Qué vehículo tiene prioridad en una vía estrecha?",
+    "correcta": "El que ya está dentro de la vía",
+    "opciones": [
+      "El que ya está dentro de la vía",
+      "El más rápido",
+      "El que viene por la izquierda",
+      "El más grande"
+    ]
+  },
+  {
+    "pregunta": "¿Qué hacer si observa una señal de “Calle sin salida”?",
+    "correcta": "No ingresar si busca paso continuo",
+    "opciones": [
+      "No ingresar si busca paso continuo",
+      "Avanzar lentamente",
+      "Usar luces altas",
+      "Estacionar sin problema"
+    ]
+  },
+  {
+    "pregunta": "¿Qué medida preventiva debe tomar en túneles?",
+    "correcta": "Encender luces y no cambiar de carril",
+    "opciones": [
+      "Encender luces y no cambiar de carril",
+      "Tocar la bocina",
+      "Cambiar de carril con rapidez",
+      "Apagar luces para no encandilar"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el límite de velocidad recomendado en una zona escolar?",
+    "correcta": "30 km/h",
+    "opciones": [
+      "30 km/h",
+      "50 km/h",
+      "60 km/h",
+      "70 km/h"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal blanca con una flecha curva y una línea roja cruzada?",
+    "correcta": "Prohibido girar en esa dirección",
+    "opciones": [
+      "Prohibido girar en esa dirección",
+      "Sentido obligatorio",
+      "Precaución en curva",
+      "Entrada exclusiva"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la conducta correcta en pasos a nivel con barrera levantada?",
+    "correcta": "Verificar visual y auditivamente antes de cruzar",
+    "opciones": [
+      "Verificar visual y auditivamente antes de cruzar",
+      "Acelerar inmediatamente",
+      "Tocar la bocina",
+      "Cambiar de carril"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal de tránsito con una figura de dos personas caminando?",
+    "correcta": "Paso peatonal o zona escolar",
+    "opciones": [
+      "Paso peatonal o zona escolar",
+      "Parque",
+      "Tienda cercana",
+      "Punto turístico"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer al conducir con sol directo en la cara?",
+    "correcta": "Usar gafas de sol y parasol, y reducir la velocidad si es necesario",
+    "opciones": [
+      "Usar gafas de sol y parasol, y reducir la velocidad si es necesario",
+      "Conducir con una mano sobre los ojos",
+      "Acelerar para salir rápido",
+      "Encender luces altas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción está prohibida en una intersección?",
+    "correcta": "Detenerse bloqueando el paso transversal",
+    "opciones": [
+      "Detenerse bloqueando el paso transversal",
+      "Girar con señalización",
+      "Esperar detrás de la línea de pare",
+      "Ceder el paso a peatones",
+      "Preguntas corregidas 161–180"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si necesita retroceder en una vía pública?",
+    "correcta": "Asegurarse de que es seguro y permitirlo solo si es indispensable",
+    "opciones": [
+      "Asegurarse de que es seguro y permitirlo solo si es indispensable",
+      "Tocar la bocina y retroceder rápidamente",
+      "Esperar que alguien lo guíe sin mirar",
+      "Hacerlo en cualquier momento"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal con un camión cuesta abajo?",
+    "correcta": "Pendiente peligrosa descendente",
+    "opciones": [
+      "Pendiente peligrosa descendente",
+      "Prohibido vehículos pesados",
+      "Control policial",
+      "Vía exclusiva"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción es ilegal en zonas de carga y descarga?",
+    "correcta": "Estacionarse sin estar realizando carga o descarga",
+    "opciones": [
+      "Estacionarse sin estar realizando carga o descarga",
+      "Detenerse brevemente para carga",
+      "Usar luces intermitentes",
+      "Circular lentamente"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la maniobra correcta al incorporarse a una vía rápida?",
+    "correcta": "Aumentar velocidad en el carril de aceleración y señalizar",
+    "opciones": [
+      "Aumentar velocidad en el carril de aceleración y señalizar",
+      "Detenerse en la entrada",
+      "Cambiar de carril sin mirar",
+      "Tocar bocina para entrar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si hay niebla intensa?",
+    "correcta": "Encender luces bajas y reducir velocidad",
+    "opciones": [
+      "Encender luces bajas y reducir velocidad",
+      "Encender luces altas",
+      "Tocar la bocina constantemente",
+      "Acelerar para salir de la niebla"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal de “Curva cerrada a la izquierda”?",
+    "correcta": "Reducir velocidad y prepararse para girar a la izquierda",
+    "opciones": [
+      "Reducir velocidad y prepararse para girar a la izquierda",
+      "Prohibido girar",
+      "Desvío obligatorio",
+      "Vía de un solo sentido"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el comportamiento correcto si se aproxima a una zona de paso de fauna?",
+    "correcta": "Disminuir velocidad y estar atento a posibles cruces",
+    "opciones": [
+      "Disminuir velocidad y estar atento a posibles cruces",
+      "Tocar bocina continuamente",
+      "Acelerar para no impactar",
+      "Encender luces altas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si el vehículo empieza a patinar?",
+    "correcta": "No frenar bruscamente y dirigir el volante en la dirección del deslizamiento",
+    "opciones": [
+      "No frenar bruscamente y dirigir el volante en la dirección del deslizamiento",
+      "Girar rápidamente al lado contrario",
+      "Frenar al máximo",
+      "Acelerar para estabilizar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con una persona en silla de ruedas?",
+    "correcta": "Estacionamiento o acceso para personas con discapacidad",
+    "opciones": [
+      "Estacionamiento o acceso para personas con discapacidad",
+      "Clínica veterinaria",
+      "Hospital temporal",
+      "Cruce escolar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se considera “zona de seguridad”?",
+    "correcta": "Espacio donde no se debe circular ni estacionar para proteger a peatones",
+    "opciones": [
+      "Espacio donde no se debe circular ni estacionar para proteger a peatones",
+      "Área de descanso del conductor",
+      "Zona exclusiva para motos",
+      "Áreas donde no hay vigilancia"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si se activa la luz de advertencia del motor?",
+    "correcta": "Detenerse tan pronto como sea seguro y revisar el vehículo",
+    "opciones": [
+      "Detenerse tan pronto como sea seguro y revisar el vehículo",
+      "Ignorarla si el auto sigue andando",
+      "Acelerar para que se apague",
+      "Apagar el aire acondicionado"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal de “Zona de niños jugando”?",
+    "correcta": "Reducir velocidad y extremar precauciones",
+    "opciones": [
+      "Reducir velocidad y extremar precauciones",
+      "Permitido estacionar",
+      "Acceso exclusivo",
+      "No se permite transitar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción es obligatoria al detenerse detrás de un bus escolar con luces intermitentes?",
+    "correcta": "Detenerse y no avanzar hasta que sea seguro",
+    "opciones": [
+      "Detenerse y no avanzar hasta que sea seguro",
+      "Pasarlo rápidamente",
+      "Tocar la bocina",
+      "Rebasar por el otro carril"
+    ]
+  },
+  {
+    "pregunta": "¿Qué precaución debe tomarse al conducir de noche en carretera?",
+    "correcta": "Encender luces bajas cuando haya otros vehículos cerca",
+    "opciones": [
+      "Encender luces bajas cuando haya otros vehículos cerca",
+      "Usar luces altas todo el tiempo",
+      "Apagar luces para no encandilar",
+      "Conducir sin luces si hay luna"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal con una figura de un tractor?",
+    "correcta": "Vehículos agrícolas pueden circular por esa vía",
+    "opciones": [
+      "Vehículos agrícolas pueden circular por esa vía",
+      "Prohibido tractores",
+      "Cruce ferroviario",
+      "Ruta sin pavimentar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer si un vehículo comienza a rebasarlo por la derecha?",
+    "correcta": "Mantener su carril y no cambiar de velocidad",
+    "opciones": [
+      "Mantener su carril y no cambiar de velocidad",
+      "Tocar la bocina",
+      "Acelerar para evitar el rebase",
+      "Cambiar de carril"
+    ]
+  },
+  {
+    "pregunta": "¿Qué documento comprueba que el conductor está autorizado legalmente para conducir?",
+    "correcta": "Licencia de conducir",
+    "opciones": [
+      "Licencia de conducir",
+      "Seguro del auto",
+      "Título de propiedad",
+      "Placa del vehículo"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción está prohibida en puentes y túneles?",
+    "correcta": "Detenerse o estacionarse",
+    "opciones": [
+      "Detenerse o estacionarse",
+      "Encender luces",
+      "Circular en línea recta",
+      "Usar cinturón"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal con una flecha circular girando en sentido horario?",
+    "correcta": "Rotonda o glorieta",
+    "opciones": [
+      "Rotonda o glorieta",
+      "Desvío obligatorio",
+      "Giro en U",
+      "Retorno de emergencia"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el objetivo de las líneas de reducción de velocidad pintadas en la vía?",
+    "correcta": "Advertir al conductor que reduzca la velocidad",
+    "opciones": [
+      "Advertir al conductor que reduzca la velocidad",
+      "Indicar zona de rebase",
+      "Prohibir la circulación",
+      "Señalar fin de autopista",
+      "Preguntas corregidas 181–200"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si ve una señal de “Fin de autopista”?",
+    "correcta": "Reducir la velocidad y prepararse para condiciones de vía urbana",
+    "opciones": [
+      "Reducir la velocidad y prepararse para condiciones de vía urbana",
+      "Acelerar antes de salir",
+      "Cambiar a carril izquierdo",
+      "Encender luces altas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con un dibujo de un túnel?",
+    "correcta": "Entrada a túnel",
+    "opciones": [
+      "Entrada a túnel",
+      "Zona de estacionamiento",
+      "Paso peatonal subterráneo",
+      "Entrada a garaje"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal con una figura humana cruzando una línea de puntos?",
+    "correcta": "Paso peatonal",
+    "opciones": [
+      "Paso peatonal",
+      "Cruce ferroviario",
+      "Entrada a parque",
+      "Zona sin peatones"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es la acción adecuada al tomar una curva en bajada?",
+    "correcta": "Reducir velocidad antes de entrar en la curva",
+    "opciones": [
+      "Reducir velocidad antes de entrar en la curva",
+      "Frenar dentro de la curva",
+      "Tocar la bocina",
+      "Girar en punto muerto"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con un avión?",
+    "correcta": "Aeropuerto cercano",
+    "opciones": [
+      "Aeropuerto cercano",
+      "Pista cerrada",
+      "Zona prohibida",
+      "Terminal de buses"
+    ]
+  },
+  {
+    "pregunta": "¿Qué es el “punto ciego” en un vehículo?",
+    "correcta": "Zona que no se puede ver por los espejos",
+    "opciones": [
+      "Zona que no se puede ver por los espejos",
+      "Punto de revisión",
+      "Lugar donde no llega el aire acondicionado",
+      "Área debajo del motor"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si otro conductor lo provoca en carretera?",
+    "correcta": "Mantener la calma y evitar confrontaciones",
+    "opciones": [
+      "Mantener la calma y evitar confrontaciones",
+      "Gritarle o perseguirlo",
+      "Acelerar para alejarse",
+      "Detenerse y discutir"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal circular con una motocicleta dentro y una línea cruzada?",
+    "correcta": "Prohibido el paso a motocicletas",
+    "opciones": [
+      "Prohibido el paso a motocicletas",
+      "Zona exclusiva para motos",
+      "Cruce peligroso",
+      "Prohibido estacionar"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer antes de abrir la puerta del vehículo?",
+    "correcta": "Verificar si viene tráfico o ciclistas",
+    "opciones": [
+      "Verificar si viene tráfico o ciclistas",
+      "Abrir sin mirar",
+      "Tocar la bocina",
+      "Esperar 10 segundos"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal de “Carril exclusivo para buses”?",
+    "correcta": "Solo vehículos autorizados pueden usar ese carril",
+    "opciones": [
+      "Solo vehículos autorizados pueden usar ese carril",
+      "Pueden pasar motos",
+      "Prohibido girar",
+      "Uso libre a cualquier hora"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal con una cámara?",
+    "correcta": "Zona con control de velocidad o vigilancia",
+    "opciones": [
+      "Zona con control de velocidad o vigilancia",
+      "Prohibido tomar fotos",
+      "Estación de noticias",
+      "Ruta panorámica"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si se le acerca un vehículo en contravía?",
+    "correcta": "Reducir velocidad y apartarse lo antes posible",
+    "opciones": [
+      "Reducir velocidad y apartarse lo antes posible",
+      "Tocar la bocina fuertemente",
+      "Acelerar para pasar primero",
+      "Apagar las luces"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal triangular con una bicicleta?",
+    "correcta": "Precaución: ciclistas en la vía",
+    "opciones": [
+      "Precaución: ciclistas en la vía",
+      "Prohibido bicicletas",
+      "Zona peatonal",
+      "Parque próximo"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si queda atrapado entre dos camiones grandes?",
+    "correcta": "Mantener distancia segura y no hacer maniobras bruscas",
+    "opciones": [
+      "Mantener distancia segura y no hacer maniobras bruscas",
+      "Frenar bruscamente",
+      "Cambiar de carril de inmediato",
+      "Tocar la bocina"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una línea amarilla discontinua en el centro de la vía?",
+    "correcta": "Permite adelantar con precaución",
+    "opciones": [
+      "Permite adelantar con precaución",
+      "Prohibido adelantar",
+      "Zona peatonal",
+      "Exclusivo para buses"
+    ]
+  },
+  {
+    "pregunta": "¿Qué hacer si pierde visibilidad por luces de frente durante la noche?",
+    "correcta": "Mirar hacia el borde derecho de la vía y reducir la velocidad",
+    "opciones": [
+      "Mirar hacia el borde derecho de la vía y reducir la velocidad",
+      "Encender luces altas",
+      "Acelerar para salir del área",
+      "Frenar en seco"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer al cruzar una intersección sin semáforo y sin señales?",
+    "correcta": "Ceder el paso a quien viene por la derecha",
+    "opciones": [
+      "Ceder el paso a quien viene por la derecha",
+      "Acelerar",
+      "Tocar la bocina",
+      "Pararse en el centro del cruce"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción es ilegal en la vía pública?",
+    "correcta": "Tirar basura desde el vehículo",
+    "opciones": [
+      "Tirar basura desde el vehículo",
+      "Escuchar música",
+      "Saludar por la ventana",
+      "Estacionar en zona permitida"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una señal de “Uso obligatorio de cinturón”?",
+    "correcta": "Todos los ocupantes deben usar el cinturón de seguridad",
+    "opciones": [
+      "Todos los ocupantes deben usar el cinturón de seguridad",
+      "Solo el conductor debe usarlo",
+      "Opcional en zonas rurales",
+      "No se aplica a vehículos grandes"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si conduce con fatiga extrema?",
+    "correcta": "Detenerse y descansar antes de continuar",
+    "opciones": [
+      "Detenerse y descansar antes de continuar",
+      "Abrir la ventana y seguir",
+      "Tomar café y continuar",
+      "Manejar más rápido para llegar pronto",
+      "Preguntas corregidas 201–214"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si su vehículo comienza a sobrecalentarse?",
+    "correcta": "Detenerse en un lugar seguro y esperar a que se enfríe el motor",
+    "opciones": [
+      "Detenerse en un lugar seguro y esperar a que se enfríe el motor",
+      "Acelerar para enfriar más rápido",
+      "Seguir conduciendo con precaución",
+      "Apagar solo el aire acondicionado"
+    ]
+  },
+  {
+    "pregunta": "¿Qué representa una señal con una figura humana bajando una pendiente?",
+    "correcta": "Advertencia de paso peatonal en bajada",
+    "opciones": [
+      "Advertencia de paso peatonal en bajada",
+      "Subida peligrosa",
+      "Escalera peatonal",
+      "Entrada a sótano"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal circular con una flecha hacia arriba y otra hacia abajo?",
+    "correcta": "Vía de doble sentido",
+    "opciones": [
+      "Vía de doble sentido",
+      "Carril exclusivo",
+      "Vía cerrada",
+      "Cruce ferroviario"
+    ]
+  },
+  {
+    "pregunta": "¿Qué acción debe evitarse al conducir bajo condiciones climáticas adversas?",
+    "correcta": "Frenar bruscamente",
+    "opciones": [
+      "Frenar bruscamente",
+      "Reducir la velocidad",
+      "Encender las luces",
+      "Aumentar la distancia de seguimiento"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe revisar especialmente antes de conducir bajo lluvia?",
+    "correcta": "Estado de los neumáticos y limpiaparabrisas",
+    "opciones": [
+      "Estado de los neumáticos y limpiaparabrisas",
+      "Color del auto",
+      "Espejos laterales",
+      "Nivel de gasolina"
+    ]
+  },
+  {
+    "pregunta": "¿Qué documento acredita que el vehículo está asegurado?",
+    "correcta": "Póliza o certificado del seguro obligatorio",
+    "opciones": [
+      "Póliza o certificado del seguro obligatorio",
+      "Licencia de conducir",
+      "Carné del propietario",
+      "Factura de compra"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el principal objetivo de las señales de advertencia?",
+    "correcta": "Informar sobre condiciones peligrosas o cambios en la vía",
+    "opciones": [
+      "Informar sobre condiciones peligrosas o cambios en la vía",
+      "Indicar límites de velocidad",
+      "Permitir el paso",
+      "Regular el estacionamiento"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal con una figura de camión y una flecha hacia abajo?",
+    "correcta": "Pendiente peligrosa con tránsito de vehículos pesados",
+    "opciones": [
+      "Pendiente peligrosa con tránsito de vehículos pesados",
+      "Zona de descarga",
+      "Puente inestable",
+      "Túnel estrecho"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa una luz de freno encendida constantemente en otro vehículo?",
+    "correcta": "Está frenando o detenido",
+    "opciones": [
+      "Está frenando o detenido",
+      "Tiene una falla eléctrica",
+      "Va en reversa",
+      "Tiene luces altas encendidas"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se debe hacer al adelantar a un ciclista?",
+    "correcta": "Dejar al menos 1.5 metros de separación lateral",
+    "opciones": [
+      "Dejar al menos 1.5 metros de separación lateral",
+      "Tocar la bocina antes de pasar",
+      "Adelantar sin cambiar de carril",
+      "Pasar a alta velocidad"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el procedimiento correcto al entrar a una rotonda?",
+    "correcta": "Ceder el paso a los que ya circulan en ella",
+    "opciones": [
+      "Ceder el paso a los que ya circulan en ella",
+      "Acelerar y entrar sin detenerse",
+      "Tocar bocina y entrar",
+      "Esperar a que el semáforo lo permita"
+    ]
+  },
+  {
+    "pregunta": "¿Qué indica una señal blanca con una “P” y una línea diagonal roja?",
+    "correcta": "Prohibido estacionar",
+    "opciones": [
+      "Prohibido estacionar",
+      "Estacionamiento permitido",
+      "Estacionamiento exclusivo",
+      "Zona de pago"
+    ]
+  },
+  {
+    "pregunta": "¿Qué debe hacer si detecta un sonido inusual en el vehículo mientras conduce?",
+    "correcta": "Detenerse en un lugar seguro y verificar el origen del sonido",
+    "opciones": [
+      "Detenerse en un lugar seguro y verificar el origen del sonido",
+      "Ignorarlo si el auto sigue andando",
+      "Acelerar para ver si desaparece",
+      "Apagar el estéreo"
+    ]
+  },
+  {
+    "pregunta": "¿Qué se considera una conducción responsable?",
+    "correcta": "Respetar normas, señales y actuar con cortesía",
+    "opciones": [
+      "Respetar normas, señales y actuar con cortesía",
+      "Apresurarse para evitar el tráfico",
+      "Solo respetar señales en la ciudad",
+      "Usar el celular solo cuando hay tráfico lento"
     ]
   }
 ];
 
-    function obtenerPreguntasAleatorias(banco, cantidad) {
+   function obtenerPreguntasAleatorias(banco, cantidad) {
       const copia = [...banco];
       for (let i = copia.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -1906,7 +2287,7 @@
       return copia.slice(0, cantidad);
     }
 
-    const preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10); // Aseguramos que haya 10 preguntas
+    let preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10);
     let currentQuestion = 0;
     let timer;
     let timeLeft = 60;
@@ -1924,7 +2305,7 @@
       document.getElementById("options").innerHTML = opcionesHTML;
       timeLeft = 60;
       document.getElementById("timer").innerText = `Tiempo: ${timeLeft}`;
-      document.getElementById("counter").innerText = `Pregunta ${currentQuestion + 1} de 10`; // Actualizar el contador
+      document.getElementById("counter").innerText = `Pregunta ${currentQuestion + 1} de 10`;
       clearInterval(timer);
       timer = setInterval(actualizarTimer, 1000);
     }
@@ -1967,20 +2348,23 @@
     }
 
     function mostrarResultado() {
-      const mensaje = score >= 8 ? "¡Felicidades, eres un gran Easy Driver!" : "Sigue practicando para mejorar tus conocimientos.";
+      const mensaje = score >= 8
+        ? "¡Felicidades, eres un gran Easy Driver!"
+        : "Sigue practicando para mejorar tus conocimientos.";
       document.getElementById("question").innerText = `Juego terminado. ${mensaje}`;
       document.getElementById("options").innerHTML = `Puntaje: ${score}/10`;
       document.getElementById("timer").style.display = "none";
-      document.getElementById("restartBtn").style.display = "inline-block"; // Mostrar el botón de reinicio
+      document.getElementById("restartBtn").style.display = "inline-block";
     }
 
     function reiniciarJuego() {
       currentQuestion = 0;
       score = 0;
       timeLeft = 60;
-      document.getElementById("timer").style.display = "block"; // Mostrar el temporizador
-      document.getElementById("restartBtn").style.display = "none"; // Ocultar el botón de reinicio
-      cargarPregunta(); // Volver a cargar la primera pregunta
+      preguntas = obtenerPreguntasAleatorias(bancoPreguntas, 10); // Nuevo set aleatorio
+      document.getElementById("timer").style.display = "block";
+      document.getElementById("restartBtn").style.display = "none";
+      cargarPregunta();
     }
 
     cargarPregunta();
